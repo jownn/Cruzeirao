@@ -4,18 +4,24 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	<h:panelGrid columns="1" width="100%">
+		<h:form>
+		 <div align="center">	
 		 <p:graphicImage 
 					    library="sistema" 
-						name="imagens/logo.png"
+						name="imagens/cruz.png"
 						alt="#{msg['pages.comuns.cabecalho.img.alt']}" 
-						title="#{msg['pages.comuns.cabecalho.img.title']}" />
+						title="#{msg['pages.comuns.cabecalho.img.title']}"
+						width = "250"
+						height = "140" />						
+		</div>
+		<!--<p:tabMenu activeIndex="#{param.i}">
+		<p:outputLabel value="#{msg['pages.comuns.cabecalho.headerText']}" />-->
 		
-		
-		<p:outputLabel value="#{msg['pages.comuns.cabecalho.headerText']}" />
-		
-        
-        
+		<p:tabMenu activeIndex="#{param.i}">
+    		<p:menuitem value="Login" outcome="login.xhtml" icon="ui-icon-locked">
+        		<f:param name="i" value="0" />
+    		</p:menuitem>
+    	</p:tabMenu>
+        </h:form>
 	</h:panelGrid>
-	
-	
 </ui:composition>
