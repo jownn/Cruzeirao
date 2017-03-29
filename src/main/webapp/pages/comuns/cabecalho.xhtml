@@ -3,8 +3,12 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
+	
+	<style> .ui-layout-unit .ui-layout-unit-content { overflow: inherit;}</style>
+	<style> .ui-widget-content {border: inherit; background: inherit;}</style>
+	
 	<h:panelGrid columns="1" width="100%">
-		<h:form style="overflow-y: hidden;overflow-x: hidden;">
+		<h:form style="overflow-y: inherit;overflow-x: inherit;">
 		 <div align="center">	
 		 <p:graphicImage 
 					    library="sistema" 
