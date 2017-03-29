@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+</h:head>
+	<h:body>
+		<div align="center">
+		<h:form>	
+		  <p:panelGrid columns="2">
+		      <p:outputLabel value="Usuario" />
+		      <p:inputText/>
+			  <p:outputLabel value="Nome" />
+		      <p:inputText/>
+			  <p:outputLabel for="popup" value="Nascimento:" />
+        	  <p:calendar id="popup" value="#{calendarView.date2}" />
+			  <p:outputLabel for="rg" value="RG: " />
+        	  <p:inputMask id="rg" value="#{maskView.rg}" mask="99.999.999-9"/>
+        	  <p:outputLabel for="cpf" value="CPF: " />
+        	  <p:inputMask id="cpf" value="#{maskView.cpf}" mask="999.999.999-99"/>
+        	  <p:outputLabel value="Tipo: " />
+        	  <p:selectManyMenu id="basic" value="#{selectManyView.selectedOptions}">
+            	<f:selectItem itemLabel="Jogador" itemValue="1" />
+            	<f:selectItem itemLabel="Tecnico" itemValue="2" />
+            	<f:selectItem itemLabel="Diretor" itemValue="3" />
+            	<f:selectItem itemLabel="Juiz" itemValue="4" />
+        	  </p:selectManyMenu>
+        	  <h:outputText value="Senha: " />
+        	  <p:password id="senha" value="#{passwordView.password2}" feedback="true" />
+		   </p:panelGrid>
+		   			<p:button outcome="inicio.xhtml" value="Salvar" icon="ui-icon-check">
+    					<f:param name="productId" value="10" />
+					</p:button>
+       </h:form>
+		</div>
+	</h:body>
+</html>

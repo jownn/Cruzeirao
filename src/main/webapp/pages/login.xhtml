@@ -32,8 +32,11 @@
 								<p:watermark for="password" value="Senha" />
 							</p:password>
 
-							<p:commandButton value="Login" action="entrar.xhtml" ajax="false"
+							<p:commandButton value="Login" action="inicio.xhtml" ajax="false"
 							    style="width: 50%; max-width: 200px;" />
+							    <p:link outcome="cadastroUsuario.xhtml" value="Não tenho cadastro">
+   								 <f:param name="productId" value="10" />
+</p:link>
 							    <!-- action="#{loginBean.login}" -->
 						</h:panelGrid>
 					</h:form>
