@@ -12,14 +12,20 @@
 		  <p:panelGrid columns="2">
 		      <p:outputLabel value="Usuario" />
 		      <p:inputText/>
+			  
 			  <p:outputLabel value="Nome" />
 		      <p:inputText/>
-			  <p:outputLabel for="popup" value="Nascimento:" />
-        	  <p:calendar id="popup" value="#{calendarView.date2}" />
+			  
+			  <p:outputLabel for="effect" value="Nascimento:" />
+        	  <p:calendar id="effect" value="#{calendarView.date8}"
+        	  locale="br" effect="fold" />
+			  
 			  <p:outputLabel for="rg" value="RG: " />
         	  <p:inputMask id="rg" value="#{maskView.rg}" mask="99.999.999-9"/>
+        	  
         	  <p:outputLabel for="cpf" value="CPF: " />
         	  <p:inputMask id="cpf" value="#{maskView.cpf}" mask="999.999.999-99"/>
+        	  
         	  <p:outputLabel value="Tipo: " />
         	  <p:selectManyMenu id="basic" value="#{selectManyView.selectedOptions}">
             	<f:selectItem itemLabel="Jogador" itemValue="1" />
@@ -27,6 +33,7 @@
             	<f:selectItem itemLabel="Diretor" itemValue="3" />
             	<f:selectItem itemLabel="Juiz" itemValue="4" />
         	  </p:selectManyMenu>
+        	  
         	  <h:outputText value="Senha: " />
         	  <p:password id="senha" value="#{passwordView.password2}" feedback="true" />
 		   </p:panelGrid>

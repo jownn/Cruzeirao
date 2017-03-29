@@ -1,8 +1,7 @@
 package sistema.beans;
- 
 import java.util.List;
-import javax.faces.bean.ManagedBean;
-
+import javax.faces.bean.ManagedBean;;
+ 
 @ManagedBean
 public class SelectManyView {
      
@@ -10,6 +9,7 @@ public class SelectManyView {
 
      
     
+ 
     public List<String> getSelectedOptions() {
         return selectedOptions;
     }
@@ -17,4 +17,5 @@ public class SelectManyView {
     public void setSelectedOptions(List<String> selectedOptions) {
         this.selectedOptions = selectedOptions;
     }
+ 
 }

@@ -13,6 +13,7 @@ public class MaskView {
     private String productKey;
     private String rg;
     private String cpf;
+    private String ano;
     
     public String getDate() {
         return date;
@@ -76,5 +77,13 @@ public class MaskView {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public String getAno() {
+		return ano;
+	}
+
+	public void setAno(String ano) {
+		this.ano = ano;
 	}
 }
