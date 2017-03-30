@@ -22,14 +22,14 @@
 		<p:outputLabel value="#{msg['pages.comuns.cabecalho.headerText']}" />-->
 		
 		<p:tabMenu activeIndex="#{param.i}">
-    		<p:menuitem value="Login" outcome="login.xhtml" icon="ui-icon-locked">
+    		<p:menuitem value="#{msg['pages.comuns.cabecalho.login']}" outcome="login.xhtml" icon="ui-icon-locked">
         		<f:param name="i" value="0" />
     		</p:menuitem>
-    		<p:menuitem value="Cadastrar Time" outcome="cadastroTime.xhtml" 
+    		<p:menuitem value="#{msg['pages.comuns.cabecalho.time']}" outcome="cadastroTime.xhtml" 
     			icon="ui-icon-carat-1-e">
         		<f:param name="i" value="0" />
     		</p:menuitem>
-    		<p:menuitem value="Cadastrar Campeonato" 
+    		<p:menuitem value="#{msg['pages.comuns.cabecalho.campeonato']}"
     			outcome="cadastroCampeonato.xhtml" 
     			icon="ui-icon-carat-1-e">
         		<f:param name="i" value="0" />

@@ -2,22 +2,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta charset="UTF-8" />
-</h:head>
-	<h:body>
-		<div align="center">
-		<h:form>	
-		  <p:panelGrid columns="2">
-		      <p:outputLabel value="Nome" />
-		      <p:inputText/>
-		   </p:panelGrid>
-		   			<p:button outcome="inicio.xhtml" value="Salvar" 
-		   			icon="ui-icon-check">
-    					<f:param name="productId" value="10" />
-					</p:button>
-       </h:form>
-		</div>
-	</h:body>
+	xmlns:p="http://primefaces.org/ui"
+	lang="#{localeBean.language}">
+
+<f:view locale="#{localeBean.locale}">
+	<h:head>
+		<meta charset="UTF-8" />
+	</h:head>
+		<h:body>
+			<div align="center">
+			<h:form>	
+			  <p:panelGrid columns="2">
+			      <p:outputLabel value="#{msg['pages.comuns.cadastroTime.nome']}" />
+			      <p:inputText/>
+			   </p:panelGrid>
+			   			<p:button outcome="inicio.xhtml" value="#{msg['pages.comuns.cadastroTime.salvar']}"
+			   			icon="ui-icon-check">
+	    					<f:param name="productId" value="10" />
+						</p:button>
+	       </h:form>
+			</div>
+		</h:body>
+</f:view>
 </html>
