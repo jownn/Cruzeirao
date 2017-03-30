@@ -13,10 +13,11 @@ public class UserView {
     private String rg;
     private String cpf;
     private String tipo;
+    private String cref;
+    private String email;
     
-    public void save() {
-        FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage("Welcome " + nome + " " + usuario));
+    public String salvar() {
+        return "inicio.xhtml";
     }
 
 	public String getUsuario() {
@@ -65,5 +66,21 @@ public class UserView {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public String getCref() {
+		return cref;
+	}
+
+	public void setCref(String cref) {
+		this.cref = cref;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }
