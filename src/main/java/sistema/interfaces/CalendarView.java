@@ -1,4 +1,4 @@
-package sistema.beans;
+package sistema.interfaces;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

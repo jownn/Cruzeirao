@@ -1,4 +1,4 @@
-package sistema.beans;
+package sistema.interfaces;
  
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;

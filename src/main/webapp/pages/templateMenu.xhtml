@@ -20,13 +20,37 @@
 	</h:head>
 
 	<h:body>
-
-
+	
+		
 	 
 		<p:layout id="globalLayout" fullPage="true">
-			 
-			 <p:layoutUnit position="north" size="225" >
+			
+			<p:layoutUnit position="north" size="225">
+			<div style="position:absolute; float:left;">
+				<p:growl id="message" showDetail="true" />
+
+				<p:commandButton value="Linguagem"
+					update="message" style="horizontal-align:right">
+					<p:confirm header="Linguagem" message="Qual idioma?" />
+				</p:commandButton>
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<h:form>
+						<h:panelGrid id="panel" style="text-align: center">
+							<p:outputLabel value="#{msg['pages.linguagem.lingua']} " />
+							<br />
+							<p:selectOneMenu value="#{localeBean.language}"
+								onchange="submit()">
+								<f:selectItem itemValue="en" itemLabel="English" />
+								<f:selectItem itemValue="pt" itemLabel="Português" />
+							</p:selectOneMenu>
+						</h:panelGrid>
+					</h:form>
+				</p:confirmDialog>
+				</div>
+				<div>
 				<ui:include src="comuns/cabecalho.xhtml" />
+				</div>
 			</p:layoutUnit>
 
 

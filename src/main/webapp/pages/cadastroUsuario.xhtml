@@ -9,10 +9,54 @@
 	<h:head>
 		<meta charset="UTF-8" />
 	</h:head>
+	
+	<style>
+		body{
+			background-image: url("../resources/sistema/1_0/imagens/wallpaper.jpg") ;
+			backgournd-repeat: no-repeat;
+			backgroud-position: center center;
+			background-attachment: fixed;
+			background-size: cover;
+			overflow-y:hidden;
+			overflow-x:hidden;
+			
+		}
+		.container {
+         width: 100vw;
+         height: 100vh;
+         display: flex;
+         flex-direction: row;
+         justify-content: center;
+         align-items: center;
+         position: fixed;
+     	}
+	
+	</style>
 		<h:body>
-			<div align="center">
-			<h:form>	
-			  <p:panelGrid id="grid" columns="3" cellpadding="5" style="margin-bottom:10px">
+			<p:growl id="message" showDetail="true" />
+
+		<p:commandButton value="Linguagem"
+			update="message" style="horizontal-align:right">
+			<p:confirm header="Linguagem" message="Qual idioma?" />
+		</p:commandButton>
+
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+			<h:form>
+				<h:panelGrid id="panel" style="text-align: center">
+					<p:outputLabel value="#{msg['pages.linguagem.lingua']} " />
+					<br />
+					<p:selectOneMenu value="#{localeBean.language}" onchange="submit()">
+						<f:selectItem itemValue="en" itemLabel="English" />
+						<f:selectItem itemValue="pt" itemLabel="Português" />
+					</p:selectOneMenu>
+				</h:panelGrid>
+			</h:form>
+		</p:confirmDialog>
+		
+			<div class="container" align="center">
+			<h:form>
+				<p:panel id="basic" header="#{msg['pages.comuns.cadastroUsuario']}" background="#ffffff">
+			  <h:panelGrid id="grid" columns="3" cellpadding="5">
 			      
 			      <p:outputLabel for="usuario" value="#{msg['pages.comuns.cadastroUsuario.usuario']}" />
 	        		<p:inputText id="usuario" value="#{userView.usuario}" 
@@ -56,14 +100,15 @@
 	        	  required="true" requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}"/>
 	        	  <p:message for="senha"/>
 				  	
-			   </p:panelGrid>
+			   </h:panelGrid>
 			   			<p:commandButton value="#{msg['pages.comuns.cadastroUsuario.cadastrar']}"
 			   			id="btnAll" process="@all" 
-			   			update="grid" action="#{userView.salvar()}" />
+			   			update="grid" action="#{userView.salvar()}" style="text-align: center"/>
 	
-						
+				</p:panel>		
 	       </h:form>
 			</div>
+		
 		</h:body>
 	</f:view>
 </html>

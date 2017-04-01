@@ -1,11 +1,16 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+
+<ui:composition template="templateMenu.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	lang="#{localeBean.language}">
+	xmlns:p="http://primefaces.org/ui">
 
-<f:view locale="#{localeBean.locale}">
+<ui:define name="title">
+	<h:outputText value="#{msg['pages.comuns.cadastroTime.titulo']}" />
+</ui:define>
+
+<ui:define name="principal">
 	<h:head>
 		<meta charset="UTF-8" />
 	</h:head>
@@ -23,5 +28,5 @@
 	       </h:form>
 			</div>
 		</h:body>
-</f:view>
-</html>
+</ui:define>
+</ui:composition>
