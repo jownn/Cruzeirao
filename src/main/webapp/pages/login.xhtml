@@ -36,9 +36,9 @@ body {
 
 		<p:growl id="message" showDetail="true" />
 
-		<p:commandButton value="Linguagem"
-			update="message" style="horizontal-align:right">
-			<p:confirm header="Linguagem" message="Qual idioma?" />
+		<p:commandButton value="#{msg['pages.linguagem.idioma']}"
+					update="message" style="horizontal-align:right">
+					<p:confirm header="Linguagem" message="#{msg['pages.linguagem.setIdioma']} " />
 		</p:commandButton>
 
 		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
