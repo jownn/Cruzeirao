@@ -15,11 +15,15 @@
 		<meta charset="UTF-8" />
 	</h:head>
 		<h:body>
+		<p:panel id="basic" header="#{msg['pages.comuns.cadastroCampeonato.titulo']}" background="#ffffff" style="text-align: center">
 			<div align="center">
 			<h:form>	
-			  <p:panelGrid columns="2">
-				  <p:outputLabel value="#{msg['pages.comuns.cadastroCampeonato.nome']}" /> 
-			      <p:inputText/>
+			  <h:panelGrid id="grid" columns="3" cellpadding="5"> 
+			  	<p:outputLabel for="nome" value="#{msg['pages.comuns.cadastroCampeonato.nome']}"/>
+	        	<p:inputText id="nome" value="#{teamView.nome}" 
+	        	required="true" requiredMessage="#{msg['pages.comuns.cadastroCampeonato.obrigatorio']}" />
+				  <p:message for="nome"/>
+
 				  
 				  <p:outputLabel for="ano" value="#{msg['pages.comuns.cadastroCampeonato.ano']}" />
 	              <p:inputMask id="ano" value="#{maskView.date}" mask="9999"/>
@@ -32,12 +36,13 @@
 	        	  <p:calendar id="multi" locale="br" value="#{calendarView.date7}" 
 	        	  pages="3" />
 	              
-	       	  </p:panelGrid>
+	       	  </h:panelGrid>
 			   			<p:button outcome="inicio.xhtml" value="#{msg['pages.comuns.cadastroCampeonato.salvar']}" icon="ui-icon-check">
 	    					<f:param name="productId" value="10" />
 						</p:button>
 	       </h:form>
 			</div>
+			</p:panel>
 		</h:body>
 </ui:define>
 </ui:composition>

@@ -1,13 +1,8 @@
-package sistema.interfaces;
+package sistema.modelos;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
- 
-@ManagedBean
-public class UserView {
-     
-    private String nome;
+public class User {
+	
+	private String nome;
     private String usuario;
     private String senha;
     private String rg;
@@ -16,11 +11,7 @@ public class UserView {
     private String cref;
     private String email;
     
-    public String salvar() {
-        return "inicio.xhtml";
-    }
-
-	public String getUsuario() {
+    public String getUsuario() {
 		return usuario;
 	}
 

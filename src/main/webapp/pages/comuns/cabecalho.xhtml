@@ -4,7 +4,10 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	
-	<style> .ui-layout-unit .ui-layout-unit-content { overflow: inherit;}</style>
+	<style> 
+	.ui-layout-unit 
+	.ui-layout-unit-content { overflow: inherit;}
+	</style>
 	<!-- <style> .ui-widget-content {border: inherit; background: inherit;}</style> -->
 	
 			
@@ -24,7 +27,7 @@
 		<p:outputLabel value="#{msg['pages.comuns.cabecalho.headerText']}" />-->
 		
 		<p:tabMenu activeIndex="#{param.i}">
-    		<p:menuitem value="#{msg['pages.comuns.cabecalho.sair']}" outcome="login.xhtml" icon="ui-icon-circle-triangle-w">
+    		<p:menuitem  value="#{msg['pages.comuns.cabecalho.sair']}" outcome="login.xhtml" icon="ui-icon-circle-triangle-w">
         		<f:param name="i" value="0" />
     		</p:menuitem>
     	</p:tabMenu>

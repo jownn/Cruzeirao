@@ -28,12 +28,13 @@ body {
 	justify-content: center;
 	align-items: center;
 	position: fixed;
+	z-index: -1;
 }
 }
 </style>
 
 	<h:body>
-
+		<div style="position:absolute; float:left;" >
 		<p:growl id="message" showDetail="true" />
 
 		<p:commandButton value="#{msg['pages.linguagem.idioma']}"
@@ -53,38 +54,37 @@ body {
 				</h:panelGrid>
 			</h:form>
 		</p:confirmDialog>
-
+		</div>
 		<div class="container">
-			<h:graphicImage library="sistema" name="imagens/cruze.png"
-				width="auto" height="400px" />
+			
 			<h:form id="login" prependId="false">
-				<p:panel id="basic" header="#{msg['pages.comuns.login']}"
-					background="#ffffff">
+			
 					<p:focus />
 					<h:panelGrid id="panel" style="text-align: center">
+						<h:graphicImage library="sistema" name="imagens/cruz.png"
+						width="auto" height="400px" />
 						<p:inputText type="text" id="username" autocomplete="off"
 							size="30" maxlength="80">
 							<p:watermark for="username"
 								value="#{msg['pages.comuns.login.usuario']}" />
 						</p:inputText>
-						<br />
 						<p:password size="30" id="password" maxlength="20">
 							<p:watermark for="password"
 								value="#{msg['pages.comuns.login.senha']}" />
 						</p:password>
-						<br />
 						<p:commandButton value="#{msg['pages.comuns.login.login']}"
 							action="inicio.xhtml" ajax="false"
 							style="width: 50%; max-width: 200px;" />
-						<br />
+
 						<p:link outcome="cadastroUsuario.xhtml"
 							value="#{msg['pages.comuns.login.novo']}">
 							<f:param name="productId" value="10" />
 						</p:link>
-
+						
+						
 						<!-- action="#{loginBean.login}" -->
+					
 					</h:panelGrid>
-				</p:panel>
 			</h:form>
 		</div>
 

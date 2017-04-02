@@ -1,6 +1,9 @@
-package sistema.interfaces;
+package sistema.beans;
 
-public class TeamView {
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+public class TeamManagedBean {
 
 	private String tecnico;
 	private String massagista;

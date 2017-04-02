@@ -15,29 +15,34 @@
 		<meta charset="UTF-8" />
 	</h:head>
 		<h:body>
+			<p:panel id="basic" header="#{msg['pages.comuns.cadastroTime.titulo']}" background="#ffffff" style="text-align: center">
 			<div align="center">
 			<h:form>	
-			  <h:panelGrid id="grid" columns="3" cellpadding="5">  
-			      <p:outputLabel for="nome" value="Nome" />
-	        		<p:inputText id="nome" value="#{teamView.nome}" 
-	        		required="true" requiredMessage="Campo Obrigatorio" />
+			  <h:panelGrid id="grid" columns="3" cellpadding="5"> 
+			   
+			      	<p:outputLabel for="nome" value="#{msg['pages.comuns.cadastroTime.nome']}"/>
+	        		<p:inputText id="nome" value="#{teamManagedBean.nome}" 
+	        		required="true" requiredMessage="#{msg['pages.comuns.cadastroTime.obrigatorio']}" />
 				  	<p:message for="nome"/>
-				  	<p:outputLabel for="massagista" value="Massagista" />
-	        		<p:inputText id="massagista" value="#{teamView.massagista}" 
-	        		required="true" requiredMessage="Campo Obrigatorio" />
+				  	
+				  	<p:outputLabel for="massagista" value="#{msg['pages.comuns.cadastroTime.massagista']}" />
+	        		<p:inputText id="massagista" value="#{teamManagedBean.massagista}" 
+	        		required="true" requiredMessage="#{msg['pages.comuns.cadastroTime.obrigatorio']}"  />
 				  	<p:message for="nome"/>
-				  	<p:outputLabel for="auxiliar" value="auxiliar" />
-	        		<p:inputText id="auxiliar" value="#{teamView.auxiliar}" 
-	        		required="true" requiredMessage="Campo Obrigatorio" />
+				  	
+				  	<p:outputLabel for="auxiliar" value="#{msg['pages.comuns.cadastroTime.auxiliar']}" />
+	        		<p:inputText id="auxiliar" value="#{teamManagedBean.auxiliar}" 
+	        		required="true" requiredMessage="#{msg['pages.comuns.cadastroTime.obrigatorio']}"  />
 				  	<p:message for="nome"/>
+				  	
 				 </h:panelGrid>
-			   			<p:commandButton value="Cadastrar"
+			   			<p:commandButton value="#{msg['pages.comuns.cadastroTime.salvar']}"
 			   			id="btnAll" process="@all" 
-			   			update="grid" action="#{teamView.salvar()}" style="text-align: center"/>
-			   			<p>Arrumar Botao nao mostra mensagem de erro</p>
+			   			update="grid" action="#{TeamManagedBean.salvar()}" style="text-align: center"/>
 	
 	       </h:form>
 			</div>
+			</p:panel>
 		</h:body>
 </ui:define>
 </ui:composition>

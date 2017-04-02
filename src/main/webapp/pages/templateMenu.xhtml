@@ -10,7 +10,9 @@
 <f:view locale="#{localeBean.locale}">
 	<h:head>
 
-		<style> .ui-datagrid-no-border .ui-datagrid-content { border: none; } </style>
+		<style> .ui-datagrid-no-border .ui-datagrid-content { border: none; } 
+		
+		</style>
 
 		<title>
 		   <ui:insert name="title">
@@ -23,9 +25,9 @@
 	
 		
 	 
-		<p:layout id="globalLayout" fullPage="true">
+		<p:layout id="globalLayout" fullPage="true" >
 			
-			<p:layoutUnit position="north" size="225">
+			<p:layoutUnit position="north" size="215">
 			<div style="position:absolute; float:left;">
 				<p:growl id="message" showDetail="true" />
 
