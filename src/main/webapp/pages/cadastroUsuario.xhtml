@@ -59,53 +59,56 @@
 			  <h:panelGrid id="grid" columns="3" cellpadding="5">
 			      
 			      <p:outputLabel for="usuario" value="#{msg['pages.comuns.cadastroUsuario.usuario']}" />
-	        		<p:inputText id="usuario" value="#{UserManagedBean.user.usuario}" 
+	        		<p:inputText id="usuario" value="#{userManagedBean.user.usuario}" 
 	        		required="true" requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}" />
 				  	<p:message for="usuario"/>
 				  	
 				  	
 				  <p:outputLabel for="nome" value="#{msg['pages.comuns.cadastroUsuario.nome']}" />
-	        		<p:inputText id="nome" value="#{UserManagedBean.user.nome}" 
+	        		<p:inputText id="nome" value="#{userManagedBean.user.nome}" 
 	        		required="true" requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}" />
 				  <p:message for="nome"/>
 				  	
 				  
 				  <p:outputLabel for="effect" value="#{msg['pages.comuns.cadastroUsuario.nasc']}" />
 	        	  <p:calendar id="effect" value="#{calendarView.date8}"
-	        	  locale="br" effect="fold" />
-				  <br/>
+	        	  locale="br" effect="fold" 
+	        	  required="true" requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}"/>
+				  <p:message for="effect"/>
+				  
+				  
 				  <p:outputLabel for="rg" value="#{msg['pages.comuns.cadastroUsuario.rg']}" />
-	        	  <p:inputMask id="rg" value="#{UserManagedBean.user.rg}" mask="99.999.999-9"
+	        	  <p:inputMask id="rg" value="#{userManagedBean.user.rg}" mask="99.999.999-9"
 	        	  required="true" requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}" />
 	        	  <p:message for="rg"/>
 				  	
 	        	  
 	        	  <p:outputLabel for="cpf" value="#{msg['pages.comuns.cadastroUsuario.cpf']}" />
-	        	  <p:inputMask id="cpf" value="#{UserManagedBean.user.cpf}" mask="999.999.999-99"
+	        	  <p:inputMask id="cpf" value="#{userManagedBean.user.cpf}" mask="999.999.999-99"
 	        	  required="true" requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}" />
 	        	  <p:message for="cpf"/>
 				  
 				  <p:outputLabel for="email" value="#{msg['pages.comuns.cadastroUsuario.email']}" />
-	        	  <p:inputText id="email" value="#{UserManagedBean.user.email}"
+	        	  <p:inputText id="email" value="#{userManagedBean.user.email}"
 	        	  required="true" requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}" />
 	        	  <p:message for="email"/>
 				  
 				  
 				  <p:outputLabel for="cref" value="#{msg['pages.comuns.cadastroUsuario.cref']}" />
-	        	  <p:inputMask id="cref" value="#{UserManagedBean.user.cref}" mask="99999-a/aa"/>
+	        	  <p:inputMask id="cref" value="#{userManagedBean.user.cref}" mask="99999-a/aa"/>
 	        	  <p:watermark for="cref" value="#{msg['pages.comuns.cadastroUsuario.opcional']}" id="watermark" />
 	        	  	
 	        	  <h:outputText for="senha" value="#{msg['pages.comuns.cadastroUsuario.senha']}" />
-	        	  <p:password id="senha" value="#{UserManagedBean.user.senha}" feedback="true" 
+	        	  <p:password id="senha" value="#{userManagedBean.user.senha}" feedback="true" 
 	        	  required="true" requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}"/>
 	        	  <p:message for="senha"/>
 				  	
 			   </h:panelGrid>
 			   			<p:commandButton value="#{msg['pages.comuns.cadastroUsuario.voltar']}"
-			   			 ajax="false" action="#{UserManagedBean.voltar()}" style="text-align: center" immediate="true"/>
+			   			 ajax="false" action="#{userManagedBean.voltar()}" style="text-align: center" immediate="true"/>
 			   			<p:commandButton value="#{msg['pages.comuns.cadastroUsuario.cadastrar']}"
 			   			id="btnAll" process="@all" 
-			   			update="grid" action="#{UserManagedBean.salvar()}" style="text-align: center"/>
+			   			update="grid" action="#{userManagedBean.salvar()}" style="text-align: center"/>
 				</p:panel>		
 	       </h:form>
 			</div>

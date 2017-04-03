@@ -22,20 +22,21 @@
 			  	<p:outputLabel for="nome" value="#{msg['pages.comuns.cadastroCampeonato.nome']}"/>
 	        	<p:inputText id="nome" value="#{teamView.nome}" 
 	        	required="true" requiredMessage="#{msg['pages.comuns.cadastroCampeonato.obrigatorio']}" />
-				  <p:message for="nome"/>
+				<p:message for="nome"/>
 
 				  
 				  <p:outputLabel for="ano" value="#{msg['pages.comuns.cadastroCampeonato.ano']}" />
 	              <p:inputMask id="ano" value="#{maskView.date}" mask="9999"/>
+				  <br/>
 				  
 				  <p:outputLabel for="effect" value="#{msg['pages.comuns.cadastroCampeonato.inicio']}" />
 	        	  <p:calendar id="effect" value="#{calendarView.date8}" 
 	        	  locale="br" effect="slide" />
-	        	  
+	        	  <br/>
 	        	  <p:outputLabel for="multi" value="#{msg['pages.comuns.cadastroCampeonato.fim']}" />
 	        	  <p:calendar id="multi" locale="br" value="#{calendarView.date7}" 
 	        	  pages="3" />
-	              
+	              <br/>
 	       	  </h:panelGrid>
 			   			<p:button outcome="inicio.xhtml" value="#{msg['pages.comuns.cadastroCampeonato.salvar']}" icon="ui-icon-check">
 	    					<f:param name="productId" value="10" />
