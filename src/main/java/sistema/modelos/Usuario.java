@@ -1,15 +1,20 @@
 package sistema.modelos;
+import java.util.ArrayList;
+import java.util.List;
 
-public class User {
+public class Usuario {
 	
 	private String nome;
     private String usuario;
     private String senha;
     private String rg;
     private String cpf;
-    private String tipo;
     private String cref;
     private String email;
+    private String dataNasc;
+    private String tipoUsuario;
+    private Time time;
+    private List<Time> timeConf = new ArrayList<Time>();
     
     public String getUsuario() {
 		return usuario;
@@ -51,14 +56,6 @@ public class User {
 		this.cpf = cpf;
 	}
 
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
 	public String getCref() {
 		return cref;
 	}
@@ -74,4 +71,38 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getDataNasc() {
+		return dataNasc;
+	}
+
+	public void setDataNasc(String dataNasc) {
+		this.dataNasc = dataNasc;
+	}
+
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+
+	public Time getTime() {
+		return time;
+	}
+
+	public void setTime(Time time) {
+		this.time = time;
+	}
+
+	public List<Time> getTimeConf() {
+		return timeConf;
+	}
+
+	public void addTimeConf(Time time) {
+		timeConf.add(time);
+	}
+	
+	
 }
