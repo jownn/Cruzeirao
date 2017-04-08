@@ -1,5 +1,6 @@
 package sistema.modelos;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Usuario {
@@ -11,7 +12,7 @@ public class Usuario {
     private String cpf;
     private String cref;
     private String email;
-    private String dataNasc;
+    private Date dataNasc;
     private String tipoUsuario;
     private Time time;
     private List<Time> timeConf = new ArrayList<Time>();
@@ -72,11 +73,11 @@ public class Usuario {
 		this.email = email;
 	}
 
-	public String getDataNasc() {
+	public Date getDataNasc() {
 		return dataNasc;
 	}
 
-	public void setDataNasc(String dataNasc) {
+	public void setDataNasc(Date dataNasc) {
 		this.dataNasc = dataNasc;
 	}
 
