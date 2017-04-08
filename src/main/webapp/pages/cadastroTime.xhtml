@@ -32,7 +32,9 @@
                 			<h:outputText value="#{cidade}" />
         			</p:selectOneMenu>
 				  	<p:message for="cidade"/>
-				  	
+					<p:outputLabel value="Logo(Opcional)"/>
+				  	<p:fileUpload value="#{fileUploadView.file}" mode="advanced" skinSimple="true"
+				  	label="Escolher" uploadLabel="Enviar" cancelLabel="Cancelar" />
 				 </h:panelGrid>
 			   			<p:commandButton value="#{msg['pages.comuns.cadastroTime.salvar']}"
 			   			id="btnAll" process="@all" 
