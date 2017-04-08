@@ -25,45 +25,13 @@
 	        		required="true" requiredMessage="#{msg['pages.comuns.cadastroTime.obrigatorio']}" />
 				  	<p:message for="nome"/>
 				  	
-				  	<p:outputLabel for="tecnico" value="#{msg['pages.comuns.cadastroTime.tecnico']}" />
-	        		<p:inputText id="tecnico" value="#{timeManagedBean.time.tecnico}" 
-	        		required="true" requiredMessage="#{msg['pages.comuns.cadastroTime.obrigatorio']}"  />
-				  	<p:message for="tecnico"/>
-				  	
-				  	<p:outputLabel for="massagista" value="#{msg['pages.comuns.cadastroTime.massagista']}" />
-	        		<p:inputText id="massagista" value="#{timeManagedBean.time.massagista}" 
-	        		required="true" requiredMessage="#{msg['pages.comuns.cadastroTime.obrigatorio']}"  />
-				  	<p:message for="massagista"/>
-				  	
-				  	<p:outputLabel for="auxiliar" value="#{msg['pages.comuns.cadastroTime.auxiliar']}" />
-	        		<p:inputText id="auxiliar" value="#{timeManagedBean.time.auxiliar}" 
-	        		required="true" requiredMessage="#{msg['pages.comuns.cadastroTime.obrigatorio']}"  />
-				  	<p:message for="auxiliar"/>
-				  	
-				  	<p:outputLabel for="preparadorFisico" value="#{msg['pages.comuns.cadastroTime.preparador']}" />
-	        		<p:inputText id="preparadorFisico" value="#{timeManagedBean.time.preparadorFisico}" 
-	        		required="true" requiredMessage="#{msg['pages.comuns.cadastroTime.obrigatorio']}"  />
-				  	<p:message for="preparadorFisico"/>
-				  	
-				  	<p:outputLabel for="diretor" value="#{msg['pages.comuns.cadastroTime.diretor']}" />
-	        		<p:inputText id="diretor" value="#{timeManagedBean.time.diretor}" 
-	        		required="true" requiredMessage="#{msg['pages.comuns.cadastroTime.obrigatorio']}"  />
-				  	<p:message for="diretor"/>
-				  	
-				  	<p:outputLabel for="categoria" value="#{msg['pages.comuns.cadastroTime.categoria']}" />
-	        		<p:inputText id="categoria" value="#{timeManagedBean.time.categoria}" 
-	        		required="true" requiredMessage="#{msg['pages.comuns.cadastroTime.obrigatorio']}"  />
-				  	<p:message for="categoria"/>
-				  	
 				  	<p:outputLabel for="cidade" value="#{msg['pages.comuns.cadastroTime.cidade']}" />
-	        		<p:inputText id="cidade" value="#{timeManagedBean.time.cidade}" 
-	        		required="true" requiredMessage="#{msg['pages.comuns.cadastroTime.obrigatorio']}"  />
+	        		<p:selectOneMenu id="cidade" value="#{fakeManagedBean.cidades}" panelStyle="width:180px"
+                         effect="fade" var="cid" style="width:160px" filter="true" filterMatchMode="startsWith">
+           			<f:selectItems value="#{fakeManagedBean.cidades}" var="cidade" itemLabel="#{cidade}" itemValue="#{cidade}" />
+                			<h:outputText value="#{cidade}" />
+        			</p:selectOneMenu>
 				  	<p:message for="cidade"/>
-				  	
-				  	<p:outputLabel for="jogadores" value="#{msg['pages.comuns.cadastroTime.jogadores']}" />
-	        		<p:inputText id="jogadores" value="#{timeManagedBean.time.jogadores}" 
-	        		required="true" requiredMessage="#{msg['pages.comuns.cadastroTime.obrigatorio']}"  />
-				  	<p:message for="jogadores"/>
 				  	
 				 </h:panelGrid>
 			   			<p:commandButton value="#{msg['pages.comuns.cadastroTime.salvar']}"
