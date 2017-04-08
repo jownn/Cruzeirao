@@ -9,11 +9,10 @@ public class UsuarioService {
 
 	private ArrayList <Usuario> usuarios = new ArrayList<Usuario>();
 	
-	public UsuarioService()
-	{
-
+	public void setUsuarios(ArrayList<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
-	
+
 	public void salvar(Usuario usuario)
 	{
 	    usuarios.add(usuario);

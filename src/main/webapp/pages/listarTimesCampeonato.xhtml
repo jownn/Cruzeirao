@@ -15,21 +15,21 @@
 
 	<ui:define name="principal">		
 		<h:form> 
-		    <p:dataScroller value="#{dataScrollerView.cars}" var="car" chunkSize="10"> <!--trocar managedbean-->
+		    <p:dataScroller value="#{fakeManagedBean.campeonatos}" var="camp" chunkSize="10"> <!--trocar managedbean-->
 		        <f:facet name="header">
 		            Times inscritos neste campeonato
 		        </f:facet>
 		 
 		        <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
-		            <p:graphicImage name="demo/images/car/#{car.brand}-big.gif" />  <!--ajustar variavel-->
+		            <!--<p:graphicImage name="demo/images/car/#{car.brand}-big.gif" />  ajustar variavel-->
 		 
 		            <p:outputPanel>
 		                <h:panelGrid columns="2" cellpadding="5">
 		                    <h:outputText value="Nome:" />
-		                    <h:outputText value="#{car.id}" style="font-weight: bold"/> <!--ajustar variavel-->
+		                    <h:outputText value="#{camp.name}" style="font-weight: bold"/> <!--ajustar variavel-->
 		 
 		                    <h:outputText value="Categoria:" />
-		                    <h:outputText value="#{car.year}" style="font-weight: bold"/> <!--ajustar variavel-->
+		                    <h:outputText value="#{camp.name}" style="font-weight: bold"/> <!--ajustar variavel-->
 
 		                </h:panelGrid>
 		            </p:outputPanel>

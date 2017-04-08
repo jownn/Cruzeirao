@@ -1,10 +1,12 @@
 package sistema.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
 import sistema.modelos.Time;
+import sistema.service.FakeService;
 import sistema.service.TimeService;
 
 
@@ -13,7 +15,13 @@ public class TimeManagedBean {
 	
 	private Time time = new Time();
 	private TimeService service = new TimeService();
-    
+	private FakeService fs = new FakeService();
+	
+	public TimeManagedBean(){
+		
+		service.setTimes((ArrayList<Time>) fs.getTimes());
+	}
+	
     public String salvar() {
     	service.salvar(time);
 		time = new Time();

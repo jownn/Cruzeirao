@@ -10,11 +10,12 @@ public class TimeService {
 	
 private ArrayList <Time> times = new ArrayList<Time>();
 	
-	public TimeService()
-	{
 
+	public void setTimes(ArrayList<Time> times) {
+	this.times = times;
 	}
-	
+
+
 	public void salvar(Time time)
 	{
 	    times.add(time);

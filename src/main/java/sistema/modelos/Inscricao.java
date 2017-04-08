@@ -1,6 +1,8 @@
 package sistema.modelos;
 
 import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Inscricao {
 	
@@ -8,7 +10,12 @@ public class Inscricao {
 	private boolean status;
 	private Image pagamento;
 	private Time time;
-	
+	private Usuario tecnico;
+	private Usuario massagista;
+	private Usuario auxiliar;
+	private Usuario preparadorFisico;
+	private Usuario diretor;
+	private List<Usuario> jogadores = new ArrayList<Usuario>();
 	
 	public Categoria getCategoria() {
 		return categoria;
@@ -35,6 +42,42 @@ public class Inscricao {
 		this.time = time;
 	}
 	
+	public Usuario getTecnico() {
+		return tecnico;
+	}
+	public void setTecnico(Usuario tecnico) {
+		this.tecnico = tecnico;
+	}
+	public Usuario getMassagista() {
+		return massagista;
+	}
+	public void setMassagista(Usuario massagista) {
+		this.massagista = massagista;
+	}
+	public Usuario getAuxiliar() {
+		return auxiliar;
+	}
+	public void setAuxiliar(Usuario auxiliar) {
+		this.auxiliar = auxiliar;
+	}
+	public Usuario getPreparadorFisico() {
+		return preparadorFisico;
+	}
+	public void setPreparadorFisico(Usuario preparadorFisico) {
+		this.preparadorFisico = preparadorFisico;
+	}
+	public Usuario getDiretor() {
+		return diretor;
+	}
+	public void setDiretor(Usuario diretor) {
+		this.diretor = diretor;
+	}
 	
+	public List<Usuario> getJogadores() {
+		return jogadores;
+	}
+	public void addJogador(Usuario jogador) {
+		jogadores.add(jogador);
+	}
 	
 }
