@@ -30,7 +30,7 @@
                          effect="fade" var="cid" style="width:160px" filter="true" filterMatchMode="startsWith">
            			<f:selectItem itemLabel="#{msg['pages.comuns.cadastroTime.selecione']}" itemValue="" noSelectionOption="true" />
            			<f:selectItems value="#{fakeManagedBean.cidades}" var="cidade" itemLabel="#{cidade}" itemValue="#{cidade}" />
-                			<h:outputText value="#{cidade}" />
+                			<h:outputText value="#{cid}" />
         			</p:selectOneMenu>
 				  	<p:message for="cidade"/>
 				  	

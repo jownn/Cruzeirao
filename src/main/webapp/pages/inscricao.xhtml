@@ -14,7 +14,90 @@
 	
 
 	<ui:define name="principal">
-	 		<!--criar inscrição aqui-->
+	<h:form id="form">
+	 	<p:carousel value="#{fakeManagedBean.campeonatos}" headerText="Campeonatos" var="campeonato" itemStyle="text-align:center" responsive="true">
+        <p:panelGrid columns="2"  style=" text-align:center; width:100%; margin:10px 0px; " columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+
+            <h:outputText value="#{msg['pages.comuns.inscricao.ano']}" />
+            <h:outputText value="#{campeonato.ano}" />
+ 			
+ 			<h:outputText value="#{msg['pages.comuns.inscricao.inicio']}"/>
+            <h:outputText value="#{campeonato.dataInicio}">
+            	<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+ 			</h:outputText>
+ 			
+            <h:outputText value="#{msg['pages.comuns.inscricao.fim']}"/>	
+            <h:outputText value="#{campeonato.dataTermino}">
+            	<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+ 			</h:outputText>
+ 			
+            <h:outputText value="#{msg['pages.comuns.inscricao.taxa']}" />
+            <h:outputText value="#{campeonato.valorTaxa}" />
+            
+            <h:outputText value="#{msg['pages.comuns.inscricao.minJog']}" />
+            <h:outputText value="#{campeonato.minJog}" />
+            
+            <h:outputText value="#{msg['pages.comuns.inscricao.maxJog']}" />
+            <h:outputText value="#{campeonato.maxJog}" />
+            
+            <f:facet name="footer" >
+            <p:outputPanel style="width: 100%; text-align:center" layout="block"> 
+                <p:commandButton update=":form:categoriaDetail" oncomplete="PF('categoriaDialog').show()" value="Ver Categorias" >
+                    <f:setPropertyActionListener value="#{campeonato}" target="#{fakeManagedBean.selectedCampeonato}" />               
+                </p:commandButton>
+                
+            </p:outputPanel>
+            </f:facet>
+            
+        </p:panelGrid>
+    </p:carousel>
+    
+    <p:dialog global="true" header="Categoria Info" widgetVar="categoriaDialog" showEffect="fade" hideEffect="fade" resizable="false" >
+        <p:outputPanel id="categoriaDetail" style="text-align:center;">
+       <p:dataGrid var="categoria" value="#{fakeManagedBean.selectedCampeonato.categoria}" columns="3" layout="grid"
+        rows="12" paginator="true" id="cats"
+        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+        rowsPerPageTemplate="6,12,16">
+ 
+        <f:facet name="header">
+            Categorias
+        </f:facet>
+ 
+        <p:panel header="#{categoria.nome}" style="text-align:center">
+            <h:panelGrid columns="2" style="width:100%">
+ 				            	
+            	<h:outputText value="#{msg['pages.comuns.inscricao.anoMin']}" />
+            	<h:outputText value="#{categoria.anoMin}" />
+            	
+            	<h:outputText value="#{msg['pages.comuns.inscricao.sexo']}" />
+            	<h:outputText value="#{categoria.sexo}" />
+				
+				<f:facet name="footer">			
+					<p:commandButton update=":form:categoriaEscolhida" type="button"  styleClass="ui-confirmdialog-yes" oncomplete="PF('categoriaDialog').close()" value="Inscrever-se">
+						<f:setPropertyActionListener value="#{categoria}" target="#{fakeManagedBean.selectedCategoria}" />	
+               		</p:commandButton>
+				</f:facet>
+            </h:panelGrid>
+        </p:panel>
+ 
+    </p:dataGrid>
+    </p:outputPanel>
+    </p:dialog>
+    	
+    	<p:panel header="Cadastro">
+    	<p:outputPanel id="categoriaEscolhida" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty fakeManagedBean.selectedCategoria}" columnClasses="label,value">
+ 
+                <h:outputText value="Categoria Escolhida:" />
+                <h:outputText value="#{fakeManagedBean.selectedCategoria.nome}" />
+                
+                <h:outputText value="Adicionar Jogadores:" />
+
+ 
+            </p:panelGrid>
+        </p:outputPanel>
+        </p:panel>
+    </h:form>
 	</ui:define>
 </ui:composition>
 

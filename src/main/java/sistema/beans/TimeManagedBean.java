@@ -5,15 +5,21 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 import sistema.modelos.Time;
-import sistema.service.FakeService;
+import sistema.service.TimeService;
 
 
 @ManagedBean
 public class TimeManagedBean {
 	
 	private Time time = new Time();
-	private FakeService service = new FakeService();
+	private TimeService service = new TimeService();
     
+    public String salvar() {
+    	service.salvar(time);
+		time = new Time();
+        return "cadastroTime.xhtml";
+    }
+	
     public Time getTime() {
 		return time;
 	}

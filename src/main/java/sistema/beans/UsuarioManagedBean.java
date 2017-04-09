@@ -1,12 +1,10 @@
 package sistema.beans;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
 import sistema.modelos.Usuario;
-import sistema.service.FakeService;
 import sistema.service.UsuarioService;
 
  
@@ -15,12 +13,6 @@ public class UsuarioManagedBean {
      
 	private Usuario usuario = new Usuario();
 	private UsuarioService service = new UsuarioService();
-	private FakeService fs = new FakeService();
-	
-	public UsuarioManagedBean(){
-		
-		service.setUsuarios((ArrayList<Usuario>) fs.getUsuarios());
-	}
 	
     public String salvar() {
     	service.salvar(usuario);

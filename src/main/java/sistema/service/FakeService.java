@@ -1,12 +1,9 @@
 package sistema.service;
 
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import javax.imageio.ImageIO;
-
 import sistema.modelos.Campeonato;
 import sistema.modelos.Categoria;
 import sistema.modelos.Time;
@@ -17,6 +14,7 @@ public class FakeService {
 	private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 	private ArrayList<Campeonato> campeonatos = new ArrayList<Campeonato>();
 	private ArrayList<Time> times = new ArrayList<Time>();
+	private ArrayList<Categoria> categorias = new ArrayList<Categoria>();
 	private ArrayList<String> cidades = new ArrayList<String>();
 	
 	public void setUsuarios(ArrayList<Usuario> usuarios) {
@@ -34,7 +32,7 @@ public class FakeService {
 		return campeonatos;	
 	}
 	public void setTimes(ArrayList<Time> times) {
-	this.times = times;
+		this.times = times;
 	}
 	public List <Time> getTimes()
 	{
@@ -47,6 +45,12 @@ public class FakeService {
 		this.cidades = cidades;
 	}
 	
+	public ArrayList<Categoria> getCategorias() {
+		return categorias;
+	}
+	public void setCategorias(ArrayList<Categoria> categorias) {
+		this.categorias = categorias;
+	}
 	@SuppressWarnings("deprecation")
 	public FakeService(){
 		
@@ -78,6 +82,8 @@ public class FakeService {
 		cat.setSexo('M');
 		cat.setHabCadJog(true);
 		cat.setHabCadTime(true);
+		categorias.add(cat);
+		campeonatos.get(0).addCategoria(cat);
 		
 		cat = new Categoria();
 		cat.setNome("Teste2");
@@ -86,6 +92,8 @@ public class FakeService {
 		cat.setSexo('M');
 		cat.setHabCadJog(true);
 		cat.setHabCadTime(true);
+		categorias.add(cat);
+		campeonatos.get(0).addCategoria(cat);
 		
 		cat = new Categoria();
 		cat.setNome("Teste3");
@@ -94,6 +102,8 @@ public class FakeService {
 		cat.setSexo('F');
 		cat.setHabCadJog(true);
 		cat.setHabCadTime(true);
+		categorias.add(cat);
+		campeonatos.get(0).addCategoria(cat);
 		
 		cat = new Categoria();
 		cat.setNome("Teste4");
@@ -102,6 +112,8 @@ public class FakeService {
 		cat.setSexo('M');
 		cat.setHabCadJog(true);
 		cat.setHabCadTime(true);
+		categorias.add(cat);
+		campeonatos.get(1).addCategoria(cat);
 		
 		cat = new Categoria();
 		cat.setNome("Teste5");
@@ -110,6 +122,8 @@ public class FakeService {
 		cat.setSexo('M');
 		cat.setHabCadJog(true);
 		cat.setHabCadTime(true);
+		categorias.add(cat);
+		campeonatos.get(1).addCategoria(cat);
 		
 		Time time = new Time();
 		time.setNome("Corinthians");
@@ -881,8 +895,6 @@ public class FakeService {
 		cidades.add("Votorantim");
 		cidades.add("Votuporanga");
 		cidades.add("Zacarias");
-
-		
 	}
 	
 }
