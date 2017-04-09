@@ -28,13 +28,17 @@
 				  	<p:outputLabel for="cidade" value="#{msg['pages.comuns.cadastroTime.cidade']}" />
 	        		<p:selectOneMenu id="cidade" value="#{fakeManagedBean.cidades}" panelStyle="width:180px"
                          effect="fade" var="cid" style="width:160px" filter="true" filterMatchMode="startsWith">
+           			<f:selectItem itemLabel="#{msg['pages.comuns.cadastroTime.selecione']}" itemValue="" noSelectionOption="true" />
            			<f:selectItems value="#{fakeManagedBean.cidades}" var="cidade" itemLabel="#{cidade}" itemValue="#{cidade}" />
                 			<h:outputText value="#{cidade}" />
         			</p:selectOneMenu>
 				  	<p:message for="cidade"/>
-					<p:outputLabel value="Logo(Opcional)"/>
+				  	
+					<p:outputLabel value="#{msg['pages.comuns.cadastroTime.logo']}"/>
 				  	<p:fileUpload value="#{fileUploadView.file}" mode="advanced" skinSimple="true"
-				  	label="Escolher" uploadLabel="Enviar" cancelLabel="Cancelar" />
+				  	label="#{msg['pages.comuns.cadastroTime.escolher']}" 
+				  	uploadLabel="#{msg['pages.comuns.cadastroTime.enviar']}" 
+				  	cancelLabel="#{msg['pages.comuns.cadastroTime.cancelar']}" />
 				 </h:panelGrid>
 			   			<p:commandButton value="#{msg['pages.comuns.cadastroTime.salvar']}"
 			   			id="btnAll" process="@all" 

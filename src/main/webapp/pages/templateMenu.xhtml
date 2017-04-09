@@ -26,27 +26,27 @@
 		
 	 
 		<p:layout id="globalLayout" fullPage="true" >
-		<p:dialog header="Solicitações de Times" widgetVar="dlg2" modal="true" 
+		<p:dialog header="#{msg['pages.templateMenu.solicitacao']}" widgetVar="dlg2" modal="true" 
 		height="450" width="900"
 		showEffect="clip" hideEffect="puff">
     		<p:tabView orientation="top">
-	       		<p:tab title="Lista">
+	       		<p:tab title="#{msg['pages.templateMenu.lista']}">
 		            <h:panelGrid columns="2" position="center">
 		                <p:dataTable var="categoria">
 						
-							<p:column headerText="Time">
+							<p:column headerText="#{msg['pages.templateMenu.time']}">
 						        <!--link para pagina de times-->
 						    </p:column>
 						   
-							<p:column headerText="Categoria">
+							<p:column headerText="#{msg['pages.templateMenu.categoria']}">
 						        
 						    </p:column>
 							
-							<p:column headerText="Campeonato">
+							<p:column headerText="#{msg['pages.templateMenu.campeonato']}">
 						        
 						    </p:column>
 							
-						    <p:column headerText="Inscrever-se">
+						    <p:column headerText="#{msg['pages.templateMenu.aceitar']}">
 						        <!--link para pagina de inscrição-->
 						    </p:column>
 						</p:dataTable>
