@@ -80,4 +80,10 @@ public class Inscricao {
 		jogadores.add(jogador);
 	}
 	
+	public String salvar(){
+		
+		
+		return "inscricao.xhtml";
+	}
+	
 }

@@ -6,7 +6,8 @@ public class Partida {
 
 	private Time time1;
 	private Time time2;
-	private int placar;
+	private int placarTime1;
+	private int placarTime2;
 	private Local local;
 	private Date data;
 	
@@ -22,12 +23,7 @@ public class Partida {
 	public void setTime2(Time time2) {
 		this.time2 = time2;
 	}
-	public int getPlacar() {
-		return placar;
-	}
-	public void setPlacar(int placar) {
-		this.placar = placar;
-	}
+
 	public Local getLocal() {
 		return local;
 	}
@@ -39,6 +35,18 @@ public class Partida {
 	}
 	public void setData(Date data) {
 		this.data = data;
+	}
+	public int getPlacarTime1() {
+		return placarTime1;
+	}
+	public void setPlacarTime1(int placarTime1) {
+		this.placarTime1 = placarTime1;
+	}
+	public int getPlacarTime2() {
+		return placarTime2;
+	}
+	public void setPlacarTime2(int placarTime2) {
+		this.placarTime2 = placarTime2;
 	}
 	
 }

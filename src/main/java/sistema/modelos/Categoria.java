@@ -14,7 +14,35 @@ public class Categoria {
 	private Campeonato campeonato;
 	private List<Chave> chaves = new ArrayList<Chave>();
 	private boolean status;
+	private Inscricao campeao;
+	private Inscricao vice;
+	private Inscricao terceiroLugar;
+	private Inscricao quartoLugar;
 	
+	public Inscricao getCampeao() {
+		return campeao;
+	}
+	public void setCampeao(Inscricao campeao) {
+		this.campeao = campeao;
+	}
+	public Inscricao getVice() {
+		return vice;
+	}
+	public void setVice(Inscricao vice) {
+		this.vice = vice;
+	}
+	public Inscricao getTerceiroLugar() {
+		return terceiroLugar;
+	}
+	public void setTerceiroLugar(Inscricao terceiroLugar) {
+		this.terceiroLugar = terceiroLugar;
+	}
+	public Inscricao getQuartoLugar() {
+		return quartoLugar;
+	}
+	public void setQuartoLugar(Inscricao quartoLugar) {
+		this.quartoLugar = quartoLugar;
+	}
 	public int getAnoMin() {
 		return anoMin;
 	}

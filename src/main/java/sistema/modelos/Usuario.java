@@ -6,7 +6,7 @@ import java.util.List;
 public class Usuario {
 	
 	private String nome;
-    private String usuario;
+	private String usuario;
     private String senha;
     private String rg;
     private String cpf;
@@ -16,14 +16,7 @@ public class Usuario {
     private String tipoUsuario;
     private Time time;
     private List<Time> timeConf = new ArrayList<Time>();
-    
-    public String getUsuario() {
-		return usuario;
-	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
 
 	public String getNome() {
 		return nome;
@@ -103,6 +96,14 @@ public class Usuario {
 
 	public void addTimeConf(Time time) {
 		timeConf.add(time);
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 	
 	

@@ -7,7 +7,6 @@ import java.util.List;
 public class Campeonato {
 	
 	private int ano;
-	private List<Time> campeao = new ArrayList<Time>();
 	private List<Categoria> categoria = new ArrayList<Categoria>();
 	private Date dataInicio;
 	private Date dataTermino;
@@ -21,12 +20,6 @@ public class Campeonato {
 	}
 	public void setAno(int ano) {
 		this.ano = ano;
-	}
-	public List<Time> getCampeao() {
-		return campeao;
-	}
-	public void addCampeao(Time campeao) {
-		this.campeao.add(campeao);
 	}
 	public List<Categoria> getCategoria() {
 		return categoria;

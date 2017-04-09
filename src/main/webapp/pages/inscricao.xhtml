@@ -73,8 +73,12 @@
             	<h:outputText value="#{categoria.sexo}" />
 				
 				<f:facet name="footer">			
-					<p:commandButton update=":form:categoriaEscolhida" type="button"  styleClass="ui-confirmdialog-yes" oncomplete="PF('categoriaDialog').close()" value="Inscrever-se">
-						<f:setPropertyActionListener value="#{categoria}" target="#{fakeManagedBean.selectedCategoria}" />	
+					<p:commandButton update=":form:categoriaEscolhida" type="button"  
+						styleClass="ui-confirmdialog-yes"
+						onclick="categoriaDialog.close()" process="@none" 
+						value="Inscrever-se">
+					<f:setPropertyActionListener value="#{categoria}" 
+										target="#{fakeManagedBean.selectedCategoria}" />	
                		</p:commandButton>
 				</f:facet>
             </h:panelGrid>
@@ -86,8 +90,9 @@
     	
     	<p:panel header="Cadastro">
     	<p:outputPanel id="categoriaEscolhida" style="text-align:center;">
-            <p:panelGrid  columns="2" rendered="#{not empty fakeManagedBean.selectedCategoria}" columnClasses="label,value">
- 
+            <p:panelGrid  columns="2" rendered="#{not empty fakeManagedBean.selectedCategoria}" 
+            	columnClasses="label,value">
+ 				
                 <h:outputText value="Categoria Escolhida:" />
                 <h:outputText value="#{fakeManagedBean.selectedCategoria.nome}" />
                 
