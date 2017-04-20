@@ -3,14 +3,17 @@ package sistema.beans;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import sistema.modelos.Campeonato;
 import sistema.modelos.Categoria;
+import sistema.modelos.Inscricao;
 import sistema.modelos.Time;
 import sistema.modelos.Usuario;
 import sistema.service.FakeService;
 
 @ManagedBean
+@SessionScoped
 public class FakeManagedBean {
 	
 	private FakeService service = new FakeService();
@@ -18,17 +21,42 @@ public class FakeManagedBean {
 	private Campeonato selectedCampeonato = new Campeonato();
 	private Usuario selectedUsuario = new Usuario();
 	private Categoria selectedCategoria = new Categoria();
+	private Inscricao selectedInscricao = new Inscricao();
 	
 	public List<Time> getTimes() {
 		return service.getTimes();
+	}
+	
+	public Time getSelectedTime() {
+        return selectedTime;
+    }
+	
+	public void setSelectedTime(Time selectedTime) {
+		this.selectedTime = selectedTime;
 	}
 	
 	public List<Campeonato> getCampeonatos() {
 		return service.getCampeonatos();
 	}
 	
+	public Campeonato getSelectedCampeonato() {
+		return selectedCampeonato;
+	}
+
+	public void setSelectedCampeonato(Campeonato selectedCampeonato) {
+		this.selectedCampeonato = selectedCampeonato;
+	}
+	
 	public List<Usuario> getUsuarios() {
 		return service.getUsuarios();
+	}
+	
+	public Usuario getSelectedUsuario() {
+		return selectedUsuario;
+	}
+
+	public void setSelectedUsuario(Usuario selectedUsuario) {
+		this.selectedUsuario = selectedUsuario;
 	}
 	
 	public List<String> getCidades() {
@@ -37,30 +65,6 @@ public class FakeManagedBean {
 	
 	public List<Categoria> getCategorias() {
 		return service.getCategorias();
-	}
-	
-	public Time getSelectedTime() {
-        return selectedTime;
-    }
- 
-    public void setSelectedCar(Time selectedTime) {
-        this.selectedTime = selectedTime;
-    }
-
-	public Campeonato getSelectedCampeonato() {
-		return selectedCampeonato;
-	}
-
-	public void setSelectedCampeonato(Campeonato selectedCampeonato) {
-		this.selectedCampeonato = selectedCampeonato;
-	}
-
-	public Usuario getSelectedUsuario() {
-		return selectedUsuario;
-	}
-
-	public void setSelectedUsuario(Usuario selectedUsuario) {
-		this.selectedUsuario = selectedUsuario;
 	}
 
 	public Categoria getSelectedCategoria() {
@@ -71,8 +75,12 @@ public class FakeManagedBean {
 		this.selectedCategoria = selectedCategoria;
 	}
 
-	public void setSelectedTime(Time selectedTime) {
-		this.selectedTime = selectedTime;
+	public Inscricao getSelectedInscricao() {
+		return selectedInscricao;
+	}
+
+	public void setSelectedInscricao(Inscricao selectedInscricao) {
+		this.selectedInscricao = selectedInscricao;
 	}
     
 	

@@ -4,8 +4,11 @@ import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.primefaces.event.FlowEvent;
+
 public class Inscricao {
 	
+	private Campeonato campeonato;
 	private Categoria categoria;
 	private boolean status;
 	private Image pagamento;
@@ -17,6 +20,12 @@ public class Inscricao {
 	private Usuario diretor;
 	private List<Usuario> jogadores = new ArrayList<Usuario>();
 	
+	public Campeonato getCampeonato() {
+		return campeonato;
+	}
+	public void setCampeonato(Campeonato campeonato) {
+		this.campeonato = campeonato;
+	}
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -85,5 +94,7 @@ public class Inscricao {
 		
 		return "inscricao.xhtml";
 	}
+	
+
 	
 }

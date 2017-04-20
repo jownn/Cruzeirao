@@ -19,7 +19,13 @@
 			<div align="center">
 			<h:form>	
 			  <h:panelGrid id="grid" columns="3" cellpadding="5"> 
- 
+ 					
+ 					
+ 				  <p:outputLabel for="Nome" value="#{msg['pages.comuns.cadastroCampeonato.nome']}" />
+	              <p:inputText id="nome" value="#{campeonatoManagedBean.campeonato.nome}"
+	              required="true" requiredMessage="#{msg['pages.comuns.cadastroCampeonato.obrigatorio']}" />
+				  <p:message for="nome"/>
+				  
 				  <p:outputLabel for="ano" value="#{msg['pages.comuns.cadastroCampeonato.ano']}" />
 	              <p:inputMask id="ano" value="#{campeonatoManagedBean.campeonato.ano}" mask="9999"
 	              required="true" requiredMessage="#{msg['pages.comuns.cadastroCampeonato.obrigatorio']}" />

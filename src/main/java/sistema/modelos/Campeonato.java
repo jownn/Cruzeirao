@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Campeonato {
 	
+	private String nome;
 	private int ano;
 	private List<Categoria> categoria = new ArrayList<Categoria>();
 	private Date dataInicio;
@@ -15,6 +16,12 @@ public class Campeonato {
 	private int maxJog;
 	private int minTimeCat;
 	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 	public int getAno() {
 		return ano;
 	}

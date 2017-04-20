@@ -5,104 +5,122 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui2="http://java.sun.com/jsf/facelets"
->
-	
+	xmlns:ui2="http://java.sun.com/jsf/facelets">
+
 	<ui:define name="title">
 		<h:outputText value="Inscrição" />
-    </ui:define>
-	
+	</ui:define>
+
 
 	<ui:define name="principal">
-	<h:form id="form">
-	 	<p:carousel value="#{fakeManagedBean.campeonatos}" headerText="Campeonatos" var="campeonato" itemStyle="text-align:center" responsive="true">
-        <p:panelGrid columns="2"  style=" text-align:center; width:100%; margin:10px 0px; " columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
-
-            <h:outputText value="#{msg['pages.comuns.inscricao.ano']}" />
-            <h:outputText value="#{campeonato.ano}" />
- 			
- 			<h:outputText value="#{msg['pages.comuns.inscricao.inicio']}"/>
-            <h:outputText value="#{campeonato.dataInicio}">
-            	<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
- 			</h:outputText>
- 			
-            <h:outputText value="#{msg['pages.comuns.inscricao.fim']}"/>	
-            <h:outputText value="#{campeonato.dataTermino}">
-            	<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
- 			</h:outputText>
- 			
-            <h:outputText value="#{msg['pages.comuns.inscricao.taxa']}" />
-            <h:outputText value="#{campeonato.valorTaxa}" />
-            
-            <h:outputText value="#{msg['pages.comuns.inscricao.minJog']}" />
-            <h:outputText value="#{campeonato.minJog}" />
-            
-            <h:outputText value="#{msg['pages.comuns.inscricao.maxJog']}" />
-            <h:outputText value="#{campeonato.maxJog}" />
-            
-            <f:facet name="footer" >
-            <p:outputPanel style="width: 100%; text-align:center" layout="block"> 
-                <p:commandButton update=":form:categoriaDetail" oncomplete="PF('categoriaDialog').show()" value="Ver Categorias" >
-                    <f:setPropertyActionListener value="#{campeonato}" target="#{fakeManagedBean.selectedCampeonato}" />               
-                </p:commandButton>
-                
-            </p:outputPanel>
-            </f:facet>
-            
-        </p:panelGrid>
-    </p:carousel>
-    
-    <p:dialog global="true" header="Categoria Info" widgetVar="categoriaDialog" showEffect="fade" hideEffect="fade" resizable="false" >
-        <p:outputPanel id="categoriaDetail" style="text-align:center;">
-       <p:dataGrid var="categoria" value="#{fakeManagedBean.selectedCampeonato.categoria}" columns="3" layout="grid"
-        rows="12" paginator="true" id="cats"
-        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-        rowsPerPageTemplate="6,12,16">
- 
-        <f:facet name="header">
-            Categorias
-        </f:facet>
- 
-        <p:panel header="#{categoria.nome}" style="text-align:center">
-            <h:panelGrid columns="2" style="width:100%">
- 				            	
-            	<h:outputText value="#{msg['pages.comuns.inscricao.anoMin']}" />
-            	<h:outputText value="#{categoria.anoMin}" />
-            	
-            	<h:outputText value="#{msg['pages.comuns.inscricao.sexo']}" />
-            	<h:outputText value="#{categoria.sexo}" />
+		<h:form id="form">
 				
-				<f:facet name="footer">			
-					<p:commandButton update=":form:categoriaEscolhida" type="button"  
-						styleClass="ui-confirmdialog-yes"
-						onclick="categoriaDialog.close()" process="@none" 
-						value="Inscrever-se">
-					<f:setPropertyActionListener value="#{categoria}" 
-										target="#{fakeManagedBean.selectedCategoria}" />	
-               		</p:commandButton>
-				</f:facet>
-            </h:panelGrid>
-        </p:panel>
+				<p:growl id="growl" sticky="true" showDetail="true"/>
  
-    </p:dataGrid>
-    </p:outputPanel>
-    </p:dialog>
-    	
-    	<p:panel header="Cadastro">
-    	<p:outputPanel id="categoriaEscolhida" style="text-align:center;">
-            <p:panelGrid  columns="2" rendered="#{not empty fakeManagedBean.selectedCategoria}" 
-            	columnClasses="label,value">
- 				
-                <h:outputText value="Categoria Escolhida:" />
-                <h:outputText value="#{fakeManagedBean.selectedCategoria.nome}" />
-                
-                <h:outputText value="Adicionar Jogadores:" />
+   				<p:wizard widgetVar="wiz">
+        		<p:tab id="Campeonato" title="Campeonato">
+        			<p:outputPanel id="campeonatoDetail" style="text-align:center;">
+					<p:dataTable id="tab1" var="campeonato" value="#{fakeManagedBean.campeonatos}">
+							
+							<p:column headerText="#{msg['pages.comuns.inscricao.ano']}" style="text-align:center;">
+								<h:outputText value="#{campeonato.ano}" />
+							</p:column>
+							
+							<p:column headerText="#{msg['pages.comuns.inscricao.inicio']}" style="text-align:center;">
+								<h:outputText value="#{campeonato.dataInicio}">
+									<f:convertDateTime type="date" pattern="dd-MM-yyyy" />
+								</h:outputText>
+							</p:column>
+							
+							<p:column headerText="#{msg['pages.comuns.inscricao.fim']}" style="text-align:center;">
+								<h:outputText value="#{campeonato.dataTermino}">
+									<f:convertDateTime type="date" pattern="dd-MM-yyyy" />
+								</h:outputText>
+							</p:column>
+							
+							<p:column headerText="#{msg['pages.comuns.inscricao.taxa']}" style="text-align:center;">
+								<h:outputText value="#{campeonato.valorTaxa}" />
+							</p:column>
+							
+							<p:column headerText="#{msg['pages.comuns.inscricao.minJog']}" style="text-align:center;">
+								<h:outputText value="#{campeonato.minJog}" />
+							</p:column>
+							
+							<p:column headerText="#{msg['pages.comuns.inscricao.maxJog']}" style="text-align:center;">
+								<h:outputText value="#{campeonato.maxJog}" />
+							</p:column>
+							
+							<p:column style="text-align:center;">
+									<p:commandButton update="@form" oncomplete="PF('wiz').next()" value="Selecionar">
+										<f:setPropertyActionListener value="#{campeonato}"
+											target="#{fakeManagedBean.selectedInscricao.campeonato}" />
+										<f:setPropertyActionListener value="#{null}"
+											target="#{fakeManagedBean.selectedInscricao.categoria}" />
+									</p:commandButton>
+							</p:column>
+						</p:dataTable>
+					</p:outputPanel>
+					</p:tab>
+					
+					<p:tab id="Categoria" title="Categoria">
+        			<p:outputPanel id="categoriaDetail" style="text-align:center;">
+						<p:dataTable id="tab2" var="categoria" value="#{fakeManagedBean.selectedInscricao.campeonato.categoria}">
+							
+							<p:column headerText="#{msg['pages.comuns.inscricao.anoMin']}" style="text-align:center;">
+								<h:outputText value="#{categoria.anoMin}" />
+							</p:column>
+							
+							<p:column headerText="#{msg['pages.comuns.inscricao.sexo']}" style="text-align:center;">
+								<h:outputText value="#{categoria.sexo}" />
+							</p:column>
+							
+							<p:column style="text-align:center;">
+								<p:commandButton update="@form" oncomplete="PF('wiz').next()" value="Inscrever-se">
+									<f:setPropertyActionListener value="#{categoria}"
+										target="#{fakeManagedBean.selectedInscricao.categoria}" />
+								</p:commandButton>
+							</p:column>
+						</p:dataTable>
+					
+					</p:outputPanel>
+					</p:tab>
+					<f:param id="adicionar" name="add"/>
+					<p:tab id="Cadastro" title="Cadastro">
+					<p:panel header="Cadastro" style="text-align:center;">
+							<p:panelGrid id="categoriaEscolhida" columns="3">							
+								<h:outputText value="#{msg['pages.comuns.inscricao.campeonato']}" />
+								<h:outputText value="#{fakeManagedBean.selectedInscricao.campeonato.nome}" />
+								<br/>
+								<h:outputText value="#{msg['pages.comuns.inscricao.categoria']}" />
+								<h:outputText value="#{fakeManagedBean.selectedInscricao.categoria.nome}" />
+								<br/>	
+								<h:outputText value="#{msg['pages.comuns.inscricao.tecnico']}"  />
+								<h:outputText  value="#{fakeManagedBean.selectedInscricao.tecnico}"/>
+								<p:commandButton value="Adicionar"/>
+								<h:outputText value="#{msg['pages.comuns.inscricao.auxiliar']}" />
+								<h:outputText  value="#{fakeManagedBean.selectedInscricao.auxiliar}"/>
+								<p:commandButton value="Adicionar"/>
+								<h:outputText value="#{msg['pages.comuns.inscricao.massagista']}" />
+								<h:outputText  value="#{fakeManagedBean.selectedInscricao.massagista}"/>
+								<p:commandButton value="Adicionar"/>
+								<h:outputText value="#{msg['pages.comuns.inscricao.preparador']}" />
+								<h:outputText  value="#{fakeManagedBean.selectedInscricao.preparadorFisico}"/>
+								<p:commandButton value="Adicionar"/>
+								<h:outputText value="Adicionar Jogadores:" />
+								<h:outputText  value="#{fakeManagedBean.selectedInscricao.jogadores}"/>
+								<p:commandButton value="Adicionar" oncomplete="PF('add').show();"/>
+							</p:panelGrid>
+					</p:panel>
+					</p:tab>
 
- 
-            </p:panelGrid>
-        </p:outputPanel>
-        </p:panel>
-    </h:form>
+			</p:wizard>
+			
+			<p:dialog header="Adicionar" widgetVar="add" showEffect="fade" hideEffect="fade" height="100">
+				<h:outputText  value="nao funciona" />
+				<h:inputText />
+			</p:dialog>
+			
+		</h:form>
 	</ui:define>
 </ui:composition>
 
