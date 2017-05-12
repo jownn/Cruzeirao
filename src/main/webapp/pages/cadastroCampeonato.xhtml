@@ -21,55 +21,30 @@
 			  <h:panelGrid id="grid" columns="3" cellpadding="5"> 
  					
  					
- 				  <p:outputLabel for="Nome" value="#{msg['pages.comuns.cadastroCampeonato.nome']}" />
+ 				  <p:outputLabel for="Nome" value="#{msg['pages.cadastroCampeonato.nome']}" />
 	              <p:inputText id="nome" value="#{campeonatoManagedBean.campeonato.nome}"
 	              required="true" requiredMessage="#{msg['pages.comuns.cadastroCampeonato.obrigatorio']}" />
-				  <p:message for="nome"/>
+				  <p:message for="nome"/>	  
 				  
-				  <p:outputLabel for="ano" value="#{msg['pages.comuns.cadastroCampeonato.ano']}" />
-	              <p:inputMask id="ano" value="#{campeonatoManagedBean.campeonato.ano}" mask="9999"
-	              required="true" requiredMessage="#{msg['pages.comuns.cadastroCampeonato.obrigatorio']}" />
-				  <p:message for="ano"/>	  
-				  
-				  <p:outputLabel for="inicio" value="#{msg['pages.comuns.cadastroCampeonato.inicio']}" />
-	        	  <p:calendar id="inicio" value="#{campeonatoManagedBean.campeonato.dataInicio}" 
+				  <p:outputLabel for="inicio" value="#{msg['pages.cadastroCampeonato.inicio']}" />
+	        	  <p:calendar id="inicio" value="#{campeonatoManagedBean.campeonato.dataInicioCampeonato}" 
 	        	  locale="br" effect="slide" 
-	        	  required="true" requiredMessage="#{msg['pages.comuns.cadastroCampeonato.obrigatorio']}"/>
+	        	  required="true" requiredMessage="#{msg['pages.cadastroCampeonato.obrigatorio']}"/>
 	        	  <p:message for="inicio"/>	
 	        	  
-	        	  <p:outputLabel for="fim" value="#{msg['pages.comuns.cadastroCampeonato.fim']}" />
-	        	  <p:calendar id="fim" value="#{campeonatoManagedBean.campeonato.dataTermino}" 
+	        	  <p:outputLabel for="fim" value="#{msg['pages.cadastroCampeonato.fim']}" />
+	        	  <p:calendar id="fim" value="#{campeonatoManagedBean.campeonato.dataFimCampeonato}" 
 	        	  locale="br" effect="slide" 
-	        	  required="true" requiredMessage="#{msg['pages.comuns.cadastroCampeonato.obrigatorio']}"/>
+	        	  required="true" requiredMessage="#{msg['pages.cadastroCampeonato.obrigatorio']}"/>
 	              <p:message for="fim"/>
 	              
-	              <p:outputLabel for="valorTaxa" value="#{msg['pages.comuns.cadastroCampeonato.taxa']}" />
+	              <p:outputLabel for="valorTaxa" value="#{msg['pages.cadastroCampeonato.taxa']}" />
 	              <p:inputMask id="valorTaxa" value="#{campeonatoManagedBean.campeonato.valorTaxa}"
-	              required="true" requiredMessage="#{msg['pages.comuns.cadastroCampeonato.obrigatorio']}" />
+	              required="true" requiredMessage="#{msg['pages.cadastroCampeonato.obrigatorio']}" />
 				  <p:message for="valorTaxa"/>
 				  
-				  <p:outputLabel for="minJog" value="#{msg['pages.comuns.cadastroCampeonato.minJog']}" />
-	              <p:inputText id="minJog" value="#{campeonatoManagedBean.campeonato.minJog}"
-	              required="true" requiredMessage="#{msg['pages.comuns.cadastroCampeonato.obrigatorio']}" />
-				  <p:message for="minJog"/>
-				  
-				  <p:outputLabel for="maxJog" value="#{msg['pages.comuns.cadastroCampeonato.maxJog']}" />
-	              <p:inputText id="maxJog" value="#{campeonatoManagedBean.campeonato.maxJog}"
-	              required="true" requiredMessage="#{msg['pages.comuns.cadastroCampeonato.obrigatorio']}" />
-				  <p:message for="maxJog"/>
-				  
-				  <p:outputLabel for="minTimeCat" value="#{msg['pages.comuns.cadastroCampeonato.minTimeCat']}" />
-	              <p:inputText id="minTimeCat" value="#{campeonatoManagedBean.campeonato.minTimeCat}"
-	              required="true" requiredMessage="#{msg['pages.comuns.cadastroCampeonato.obrigatorio']}" />
-				  <p:message for="minTimeCat"/>
-				  
-				  <p:outputLabel for="categoria" value="#{msg['pages.comuns.cadastroCampeonato.categoria']}" />
-	              <p:inputText id="categoria" value="#{campeonatoManagedBean.campeonato.categoria}"
-	              required="true" requiredMessage="#{msg['pages.comuns.cadastroCampeonato.obrigatorio']}" />
-				  <p:message for="categoria"/>
-				  
 	       	  </h:panelGrid>
-			   			<p:commandButton value="#{msg['pages.comuns.cadastroCampeonato.salvar']}"
+			   			<p:commandButton value="#{msg['pages.cadastroCampeonato.salvar']}"
 			   			id="btnAll" process="@all" 
 			   			update="grid" action="#{CampeonatoManagedBean.salvar()}" style="text-align: center"/>
 	       </h:form>

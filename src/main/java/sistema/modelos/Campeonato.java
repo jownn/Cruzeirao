@@ -37,7 +37,7 @@ public class Campeonato implements Serializable{
 	private Date  dataInicioInscricao;
 
 	@Temporal(TemporalType.DATE)
-	private Date dataFimFimInscricao;
+	private Date dataFimInscricao;
 
 	@Temporal(TemporalType.DATE)
 	private Date dataInicioCampeonato;
@@ -108,15 +108,15 @@ public class Campeonato implements Serializable{
 
 	}
 
-	public Date getDataFimFimInscricao() {
+	public Date getDataFimInscricao() {
 
-		return dataFimFimInscricao;
+		return dataFimInscricao;
 
 	}
 
-	public void setDataFimFimInscricao(Date dataFimFimInscricao) {
+	public void setDataFimInscricao(Date dataFimInscricao) {
 
-		this.dataFimFimInscricao = dataFimFimInscricao;
+		this.dataFimInscricao = dataFimInscricao;
 
 	}
 

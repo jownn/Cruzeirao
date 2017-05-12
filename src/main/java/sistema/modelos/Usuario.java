@@ -11,7 +11,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import enums.*;
+
+import sistema.enums.*;
 
 @Entity
 public class Usuario implements Serializable {

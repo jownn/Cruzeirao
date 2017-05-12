@@ -11,7 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import enums.Formato;
+
+import sistema.enums.Formato;
 
 @Entity
 public class Fase implements Serializable{

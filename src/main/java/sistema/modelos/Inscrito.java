@@ -6,7 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import enums.TipoInscrito;
+
+import sistema.enums.TipoInscrito;
 
 @Entity
 public class Inscrito implements Serializable{
