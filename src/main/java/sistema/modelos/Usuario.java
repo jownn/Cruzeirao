@@ -1,110 +1,249 @@
 package sistema.modelos;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import enums.*;
 
-public class Usuario {
-	
+@Entity
+public class Usuario implements Serializable {
+
+	//ATRIBUTOS
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int codigoUsuario;
+
+	private String email;
+
 	private String nome;
-	private String usuario;
-    private String senha;
-    private String rg;
-    private String cpf;
-    private String cref;
-    private String email;
-    private Date dataNasc;
-    private String tipoUsuario;
-    private Time time;
-    private List<Time> timeConf = new ArrayList<Time>();
 
+	@Temporal(TemporalType.DATE)
+	private Date dataNasimento;
 
-	public String getNome() {
-		return nome;
+	@ManyToMany(mappedBy = "diretores")
+	private ArrayList<Equipe> equipes = new ArrayList<Equipe>();
+
+	@OneToMany(mappedBy = "usuario")
+	private ArrayList<Inscrito> inscricoes = new ArrayList<Inscrito>();
+
+	@OneToMany
+	private ArrayList<Campeonato> campeonatos = new ArrayList<Campeonato>();
+
+	private String telefoneFixo;
+
+	private String telefoneMovel;
+
+	private String endereco;
+
+	private String rg;
+
+	private String cpf;
+
+	private String cref;
+
+	private Sexo sexo;
+	
+	private TipoUsuario tipo;
+
+	//GETTERS AND SETTERS
+	public TipoUsuario getTipo() {
+		return tipo;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setTipo(TipoUsuario tipo) {
+		this.tipo = tipo;
 	}
 
-	public String getSenha() {
-		return senha;
+	public Sexo getSexo() {
+
+		return sexo;
+
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setSexo(Sexo sexo) {
+
+		this.sexo = sexo;
+
 	}
 
-	public String getRg() {
-		return rg;
+	private String foto;
+
+	public int getCodigoUsuario() {
+
+		return codigoUsuario;
+
 	}
 
-	public void setRg(String rg) {
-		this.rg = rg;
-	}
+	public void setCodigoUsuario(int codigoUsuario) {
 
-	public String getCpf() {
-		return cpf;
-	}
+		this.codigoUsuario = codigoUsuario;
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getCref() {
-		return cref;
-	}
-
-	public void setCref(String cref) {
-		this.cref = cref;
 	}
 
 	public String getEmail() {
+
 		return email;
+
 	}
 
 	public void setEmail(String email) {
+
 		this.email = email;
+
 	}
 
-	public Date getDataNasc() {
-		return dataNasc;
+	public String getNome() {
+
+		return nome;
+
 	}
 
-	public void setDataNasc(Date dataNasc) {
-		this.dataNasc = dataNasc;
+	public void setNome(String nome) {
+
+		this.nome = nome;
+
 	}
 
-	public String getTipoUsuario() {
-		return tipoUsuario;
+	public Date getDataNasimento() {
+
+		return dataNasimento;
+
 	}
 
-	public void setTipoUsuario(String tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
+	public void setDataNasimento(Date dataNasimento) {
+
+		this.dataNasimento = dataNasimento;
+
 	}
 
-	public Time getTime() {
-		return time;
+	public ArrayList<Equipe> getEquipes() {
+
+		return equipes;
+
 	}
 
-	public void setTime(Time time) {
-		this.time = time;
+	public void setEquipes(ArrayList<Equipe> equipes) {
+
+		this.equipes = equipes;
+
 	}
 
-	public List<Time> getTimeConf() {
-		return timeConf;
+	public ArrayList<Inscrito> getInscricoes() {
+
+		return inscricoes;
+
 	}
 
-	public void addTimeConf(Time time) {
-		timeConf.add(time);
+	public void setInscricoes(ArrayList<Inscrito> inscricoes) {
+
+		this.inscricoes = inscricoes;
+
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public ArrayList<Campeonato> getCampeonatos() {
+
+		return campeonatos;
+
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setCampeonatos(ArrayList<Campeonato> campeonatos) {
+
+		this.campeonatos = campeonatos;
+
 	}
-	
-	
+
+	public String getTelefoneFixo() {
+
+		return telefoneFixo;
+
+	}
+
+	public void setTelefoneFixo(String telefoneFixo) {
+
+		this.telefoneFixo = telefoneFixo;
+
+	}
+
+	public String getTelefoneMovel() {
+
+		return telefoneMovel;
+
+	}
+
+	public void setTelefoneMovel(String telefoneMovel) {
+
+		this.telefoneMovel = telefoneMovel;
+
+	}
+
+	public String getEndereco() {
+
+		return endereco;
+
+	}
+
+	public void setEndereco(String endereco) {
+
+		this.endereco = endereco;
+
+	}
+
+	public String getRg() {
+
+		return rg;
+
+	}
+
+	public void setRg(String rg) {
+
+		this.rg = rg;
+
+	}
+
+	public String getCpf() {
+
+		return cpf;
+
+	}
+
+	public void setCpf(String cpf) {
+
+		this.cpf = cpf;
+
+	}
+
+	public String getCref() {
+
+		return cref;
+
+	}
+
+	public void setCref(String cref) {
+
+		this.cref = cref;
+
+	}
+
+	public String getFoto() {
+
+		return foto;
+
+	}
+
+	public void setFoto(String foto) {
+
+		this.foto = foto;
+
+	}
+
 }

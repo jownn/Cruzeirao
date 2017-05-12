@@ -1,74 +1,171 @@
 package sistema.modelos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-public class Campeonato {
-	
+@Entity
+public class Campeonato implements Serializable{
+
+	//ATRIBUTOS
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int codigoCampeonato;
+
 	private String nome;
-	private int ano;
-	private List<Categoria> categoria = new ArrayList<Categoria>();
-	private Date dataInicio;
-	private Date dataTermino;
+	
+	@OneToMany
+
+	private ArrayList<Local> locais = new ArrayList<Local>();
+
+	@OneToMany
+	private ArrayList<Juiz> juizes= new ArrayList<Juiz>();
+
+	@OneToMany(mappedBy="campeonato")
+	private ArrayList<Categoria> categorias= new ArrayList<Categoria>();
+
+	@Temporal(TemporalType.DATE)
+	private Date  dataInicioInscricao;
+
+	@Temporal(TemporalType.DATE)
+	private Date dataFimFimInscricao;
+
+	@Temporal(TemporalType.DATE)
+	private Date dataInicioCampeonato;
+
+	@Temporal(TemporalType.DATE)
+	private Date dataFimCampeonato;
+
 	private double valorTaxa;
-	private int minJog;
-	private int maxJog;
-	private int minTimeCat;
-	
+
+	//GETTERS AND SETTERS
 	public String getNome() {
+
 		return nome;
+
 	}
+
 	public void setNome(String nome) {
+
 		this.nome = nome;
+
 	}
-	public int getAno() {
-		return ano;
+
+	public ArrayList<Local> getLocais() {
+
+		return locais;
+
 	}
-	public void setAno(int ano) {
-		this.ano = ano;
+
+	public void setLocais(ArrayList<Local> locais) {
+
+		this.locais = locais;
+
 	}
-	public List<Categoria> getCategoria() {
-		return categoria;
+
+	public ArrayList<Juiz> getJuizes() {
+
+		return juizes;
+
 	}
-	public void addCategoria(Categoria categoria) {
-		this.categoria.add(categoria);
+
+	public void setJuizes(ArrayList<Juiz> juizes) {
+
+		this.juizes = juizes;
+
 	}
-	public Date getDataInicio() {
-		return dataInicio;
+
+	public ArrayList<Categoria> getCategorias() {
+
+		return categorias;
+
 	}
-	public void setDataInicio(Date dataInicio) {
-		this.dataInicio = dataInicio;
+
+	public void setCategorias(ArrayList<Categoria> categorias) {
+
+		this.categorias = categorias;
+
 	}
-	public Date getDataTermino() {
-		return dataTermino;
+
+	public Date getDataInicioInscricao() {
+
+		return dataInicioInscricao;
+
 	}
-	public void setDataTermino(Date dataTermino) {
-		this.dataTermino = dataTermino;
+
+	public void setDataInicioInscricao(Date dataInicioInscricao) {
+
+		this.dataInicioInscricao = dataInicioInscricao;
+
 	}
+
+	public Date getDataFimFimInscricao() {
+
+		return dataFimFimInscricao;
+
+	}
+
+	public void setDataFimFimInscricao(Date dataFimFimInscricao) {
+
+		this.dataFimFimInscricao = dataFimFimInscricao;
+
+	}
+
+	public Date getDataInicioCampeonato() {
+
+		return dataInicioCampeonato;
+
+	}
+
+	public void setDataInicioCampeonato(Date dataInicioCampeonato) {
+
+		this.dataInicioCampeonato = dataInicioCampeonato;
+
+	}
+
+	public Date getDataFimCampeonato() {
+
+		return dataFimCampeonato;
+
+	}
+
+	public void setDataFimCampeonato(Date dataFimCampeonato) {
+
+		this.dataFimCampeonato = dataFimCampeonato;
+
+	}
+
 	public double getValorTaxa() {
+
 		return valorTaxa;
+
 	}
+
 	public void setValorTaxa(double valorTaxa) {
+
 		this.valorTaxa = valorTaxa;
+
 	}
-	public int getMinJog() {
-		return minJog;
+
+	public int getCodigoCampeonato() {
+
+		return codigoCampeonato;
+
 	}
-	public void setMinJog(int minJog) {
-		this.minJog = minJog;
-	}
-	public int getMaxJog() {
-		return maxJog;
-	}
-	public void setMaxJog(int maxJog) {
-		this.maxJog = maxJog;
-	}
-	public int getMinTimeCat() {
-		return minTimeCat;
-	}
-	public void setMinTimeCat(int minTimeCat) {
-		this.minTimeCat = minTimeCat;
-	}
-	
+
+	public void setCodigoCampeonato(int codigoCampeonato) {
+
+		this.codigoCampeonato = codigoCampeonato;
+
+	}	
+
 }

@@ -1,4 +1,4 @@
-package sistema.beans;
+/*package sistema.beans;
 
 import java.util.List;
 
@@ -85,3 +85,4 @@ public class FakeManagedBean {
     
 	
 }
+*/
