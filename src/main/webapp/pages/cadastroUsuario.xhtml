@@ -3,41 +3,44 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components"
 	lang="#{localeBean.language}">
-	
+
 <f:view locale="#{localeBean.locale}">
 	<h:head>
 		<meta charset="UTF-8" />
 	</h:head>
-	
+
 	<style>
-		body{
-			background-image: url("../resources/sistema/1_0/imagens/wallpaper.jpg") ;
-			backgournd-repeat: no-repeat;
-			backgroud-position: center center;
-			background-attachment: fixed;
-			background-size: cover;
-			overflow-y:hidden;
-			overflow-x:hidden;
-			
-		}
-		.container {
-         width: 100vw;
-         height: 100vh;
-         display: flex;
-         flex-direction: row;
-         justify-content: center;
-         align-items: center;
-         position: fixed;
-     	}
-	
-	</style>
-		<h:body>
-			<p:growl id="message" showDetail="true" />
+body {
+	background-image: url("../resources/sistema/1_0/imagens/wallpaper.jpg");
+	backgournd-repeat: no-repeat;
+	backgroud-position: center center;
+	background-attachment: fixed;
+	background-size: cover;
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+
+.container {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+}
+</style>
+	<h:body>
+		<p:growl id="message" showDetail="true" />
 
 		<p:commandButton value="#{msg['pages.linguagem.idioma']}"
-					update="message" style="horizontal-align:right">
-					<p:confirm header="Linguagem" message="#{msg['pages.linguagem.setIdioma']} " />
+			update="message" style="horizontal-align:right">
+			<p:confirm header="Linguagem"
+				message="#{msg['pages.linguagem.setIdioma']} " />
 		</p:commandButton>
 
 		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
@@ -52,62 +55,81 @@
 				</h:panelGrid>
 			</h:form>
 		</p:confirmDialog>
-		
-			<div class="container" align="center">
-			<h:form>
-			<p:panel id="basic" header="#{msg['pages.comuns.cadastroUsuario']}" background="#ffffff">
-			  <h:panelGrid id="grid" columns="3" cellpadding="5">
-				  	
-				  <p:outputLabel for="nome" value="#{msg['pages.comuns.cadastroUsuario.nome']}" />
-	        		<p:inputText id="nome" value="#{usuarioManagedBean.usuario.nome}" 
-	        		required="true" requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}" />
-				  <p:message for="nome"/>
-				  
-				  <p:outputLabel for="nasc" value="#{msg['pages.comuns.cadastroUsuario.nasc']}" />
-	        	  <p:calendar id="nasc" value="#{usuarioManagedBean.usuario.dataNasc}"
-	        	  locale="br" effect="fold" 
-	        	  required="true" requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}"/>
-				  <p:message for="nasc"/>
-				  
-				  <p:outputLabel for="rg" value="#{msg['pages.comuns.cadastroUsuario.rg']}" />
-	        	  <p:inputMask id="rg" value="#{usuarioManagedBean.usuario.rg}" mask="99.999.999-9"
-	        	  required="true" requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}" />
-	        	  <p:message for="rg"/>
 
-	        	  <p:outputLabel for="cpf" value="#{msg['pages.comuns.cadastroUsuario.cpf']}" />
-	        	  <p:inputMask id="cpf" value="#{usuarioManagedBean.usuario.cpf}" mask="999.999.999-99"
-	        	  required="true" requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}" />
-	        	  <p:message for="cpf"/>
-				  
-				  <p:outputLabel for="email" value="#{msg['pages.comuns.cadastroUsuario.email']}" />
-	        	  <p:inputText id="email" value="#{usuarioManagedBean.usuario.email}"
-	        	  required="true" requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}" />
-	        	  <p:message for="email"/>
-				  
-				  <p:outputLabel for="cref" value="#{msg['pages.comuns.cadastroUsuario.cref']}" />
-	        	  <p:inputMask id="cref" value="#{usuarioManagedBean.usuario.cref}" mask="99999-a/aa"/>
-	        	  <p:watermark for="cref" value="#{msg['pages.comuns.cadastroUsuario.opcional']}" id="watermark" />
-	        	  
-	        	  <p:outputLabel for="usuario" value="#{msg['pages.comuns.cadastroUsuario.usuario']}" />
-	        	  <p:inputText id="usuario" value="#{usuarioManagedBean.usuario.usuario}" 
-	        	  required="true" requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}" />
-				  <p:message for="usuario"/>
-	        	  
-	        	  <h:outputText for="senha" value="#{msg['pages.comuns.cadastroUsuario.senha']}" />
-	        	  <p:password id="senha" value="#{usuarioManagedBean.usuario.senha}" feedback="true" 
-	        	  required="true" requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}"/>
-	        	  <p:message for="senha"/>
-				  	
-			   </h:panelGrid>
-			   			<p:commandButton value="#{msg['pages.comuns.cadastroUsuario.voltar']}"
+		<div class="container" align="center">
+			<h:form>
+				<p:panel id="basic" header="#{msg['pages.comuns.cadastroUsuario']}"
+					background="#ffffff">
+					<h:panelGrid id="grid" columns="3" cellpadding="5">
+						<p:outputLabel for="nome"
+							value="#{msg['pages.comuns.cadastroUsuario.nome']}" />
+						<p:inputText id="nome" value="#{usuarioManagedBean.usuario.nome}"
+							required="true"
+							requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}" />
+						<p:message for="nome" />
+
+						<p:outputLabel for="nasc"
+							value="#{msg['pages.comuns.cadastroUsuario.nasc']}" />
+						<p:calendar id="nasc"
+							value="#{usuarioManagedBean.usuario.dataNasimento}" locale="br"
+							effect="fold" required="true"
+							requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}" />
+						<p:message for="nasc" />
+
+						<p:outputLabel for="rg"
+							value="#{msg['pages.comuns.cadastroUsuario.rg']}" />
+						<p:inputMask id="rg" value="#{usuarioManagedBean.usuario.rg}"
+							mask="99.999.999-9" required="true"
+							requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}" />
+						<p:message for="rg" />
+
+						<p:outputLabel for="cpf"
+							value="#{msg['pages.comuns.cadastroUsuario.cpf']}" />
+						<p:inputMask id="cpf" value="#{usuarioManagedBean.usuario.cpf}"
+							mask="999.999.999-99" required="true"
+							requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}" />
+						<p:message for="cpf" />
+
+						<p:outputLabel for="email"
+							value="#{msg['pages.comuns.cadastroUsuario.email']}" />
+						<p:inputText id="email"
+							value="#{usuarioManagedBean.usuario.email}" required="true"
+							requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}" />
+						<p:message for="email" />
+
+						<p:outputLabel for="cref"
+							value="#{msg['pages.comuns.cadastroUsuario.cref']}" />
+						<p:inputMask id="cref" value="#{usuarioManagedBean.usuario.cref}"
+							mask="99999-a/aa" />
+						<p:watermark for="cref"
+							value="#{msg['pages.comuns.cadastroUsuario.opcional']}"
+							id="watermark" />
+
+						<p:outputLabel for="usuario"
+							value="#{msg['pages.comuns.cadastroUsuario.usuario']}" />
+						<p:inputText id="usuario"
+							value="#{usuarioManagedBean.usuario.usuario}" required="true"
+							requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}" />
+						<p:message for="usuario" />
+
+						<h:outputText for="senha"
+							value="#{msg['pages.comuns.cadastroUsuario.senha']}" />
+						<p:password id="senha" value="#{usuarioManagedBean.usuario.senha}"
+							feedback="true" required="true"
+							requiredMessage="#{msg['pages.comuns.cadastroUsuario.obrigatorio']}" />
+						<p:message for="senha" />
+
+					</h:panelGrid>
+					 	<p:commandButton value="#{msg['pages.comuns.cadastroUsuario.voltar']}"
 			   			 ajax="false" action="#{usuarioManagedBean.voltar()}" style="text-align: center" immediate="true"/>
+			   			
 			   			<p:commandButton value="#{msg['pages.comuns.cadastroUsuario.cadastrar']}"
 			   			id="btnAll" process="@all" 
 			   			update="grid" action="#{usuarioManagedBean.salvar()}" style="text-align: center"/>
 				</p:panel>
-	       </h:form>
-			</div>
-		
-		</h:body>
-	</f:view>
+			</h:form>
+		</div>
+
+	</h:body>
+</f:view>
 </html>

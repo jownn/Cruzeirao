@@ -55,6 +55,16 @@ public class Usuario implements Serializable {
 	private Sexo sexo;
 	
 	private TipoUsuario tipo;
+	
+	private String usuario;
+	
+	private String senha;
+
+	
+	
+	public Usuario() {
+		super();
+	}
 
 	//GETTERS AND SETTERS
 	public TipoUsuario getTipo() {
@@ -245,6 +255,22 @@ public class Usuario implements Serializable {
 
 		this.foto = foto;
 
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 }

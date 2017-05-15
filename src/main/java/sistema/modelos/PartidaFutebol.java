@@ -5,6 +5,7 @@ import javax.persistence.OneToMany;
 
 //DUVIDAS NESSA CLASSE SOBRE COMO PERSISRTIR UMA HERANÇA
 
+
 public class PartidaFutebol{
 
 	//ATRIBUTOS

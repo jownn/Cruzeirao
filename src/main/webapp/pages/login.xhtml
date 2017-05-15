@@ -34,60 +34,62 @@ body {
 </style>
 
 	<h:body>
-		<div style="position:absolute; float:left;" >
-		<p:growl id="message" showDetail="true" />
+		<div style="position: absolute; float: left;">
+			<p:growl id="message" showDetail="true" />
 
-		<p:commandButton value="#{msg['pages.linguagem.idioma']}"
-					update="message" style="horizontal-align:right">
-					<p:confirm header="Linguagem" message="#{msg['pages.linguagem.setIdioma']} " />
-		</p:commandButton>
+			<p:commandButton value="#{msg['pages.linguagem.idioma']}"
+				update="message" style="horizontal-align:right">
+				<p:confirm header="Linguagem"
+					message="#{msg['pages.linguagem.setIdioma']} " />
+			</p:commandButton>
 
-		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-			<h:form>
-				<h:panelGrid id="panel" style="text-align: center">
-					<p:outputLabel value="#{msg['pages.linguagem.lingua']} " />
-					<br />
-					<p:selectOneMenu value="#{localeBean.language}" onchange="submit()">
-						<f:selectItem itemValue="en" itemLabel="English" />
-						<f:selectItem itemValue="pt" itemLabel="Português" />
-					</p:selectOneMenu>
-				</h:panelGrid>
-			</h:form>
-		</p:confirmDialog>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<h:form>
+					<h:panelGrid id="panel" style="text-align: center">
+						<p:outputLabel value="#{msg['pages.linguagem.lingua']} " />
+						<br />
+						<p:selectOneMenu value="#{localeBean.language}"
+							onchange="submit()">
+							<f:selectItem itemValue="en" itemLabel="English" />
+							<f:selectItem itemValue="pt" itemLabel="Português" />
+						</p:selectOneMenu>
+					</h:panelGrid>
+				</h:form>
+			</p:confirmDialog>
 		</div>
 		<div class="container">
-			
+
 			<h:form id="login" prependId="false">
-			
-					<p:focus />
-					
-					<h:panelGrid id="panel" style="text-align: center">
-						<h:graphicImage library="sistema" name="imagens/cruz1.png"
+
+				<p:focus />
+
+				<h:panelGrid id="panel" style="text-align: center">
+					<h:graphicImage library="sistema" name="imagens/cruz1.png"
 						width="auto" height="400px" />
-						
-						<p:inputText type="text" id="username" autocomplete="off"
-							size="30" maxlength="80">
-							<p:watermark for="username"
-								value="#{msg['pages.comuns.login.usuario']}" />
-						</p:inputText>
 
-						<p:password size="30" id="password" maxlength="20">
-							<p:watermark for="password"
-								value="#{msg['pages.comuns.login.senha']}" />
-						</p:password>
+					<p:inputText type="text" id="username" autocomplete="off" size="30"
+						maxlength="80">
+						<p:watermark for="username"
+							value="#{msg['pages.comuns.login.usuario']}" />
+					</p:inputText>
 
-						<p:commandButton value="#{msg['pages.comuns.login.login']}"
-							action="inicio.xhtml" ajax="false"
-							style="width: 50%; max-width: 200px;" />
+					<p:password size="30" id="password" maxlength="20">
+						<p:watermark for="password"
+							value="#{msg['pages.comuns.login.senha']}" />
+					</p:password>
 
-						<p:link outcome="cadastroUsuario.xhtml"
-							style="color: black" value="#{msg['pages.comuns.login.novo']}">
-							<f:param name="productId" value="10" />
-						</p:link>
-						
-						<!-- action="#{loginBean.login}" -->
-					</h:panelGrid>
-											
+					<p:commandButton value="#{msg['pages.comuns.login.login']}"
+						action="inicio.xhtml" ajax="false"
+						style="width: 50%; max-width: 200px;" />
+
+					<p:link outcome="cadastroUsuario.xhtml" style="color: black"
+						value="#{msg['pages.comuns.login.novo']}">
+						<f:param name="productId" value="10" />
+					</p:link>
+
+					<!-- action="#{loginBean.login}" -->
+				</h:panelGrid>
+
 			</h:form>
 		</div>
 

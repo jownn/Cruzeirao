@@ -5,18 +5,17 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui2="http://java.sun.com/jsf/facelets"
-	>
-	
+	xmlns:ui2="http://java.sun.com/jsf/facelets">
+
 	<ui:define name="title">
 		<h:outputText value="Campeonatos" />
 	</ui:define>
-	
+
 
 	<ui:define name="principal">
-	 	 
-	   	<h:form>
-	   		<h3>Lista de Campeonatos</h3>
+
+		<h:form>
+			<h3>Lista de Campeonatos</h3>
     		<p:tabView orientation="top">
 	       		<p:tab title="Campeonato I">
 		            <h:panelGrid columns="2" position="center">
@@ -24,7 +23,7 @@
 						    <p:column headerText="Categoria">
 						        
 						    </p:column>
-						
+
 							<p:column headerText="Times">
 						        <!--link para pagina de times-->
 						    </p:column>
@@ -41,7 +40,7 @@
 						    <p:column headerText="Categoria">
 						        
 						    </p:column>
-						
+
 							<p:column headerText="Times">
 						        <!--link para pagina de times-->
 						    </p:column>
@@ -58,7 +57,7 @@
 						    <p:column headerText="Categoria">
 						        
 						    </p:column>
-						
+
 							<p:column headerText="Times">
 						        <!--link para pagina de times-->
 						    </p:column>
@@ -70,8 +69,8 @@
 		            </h:panelGrid>
 	        	</p:tab>
    			 </p:tabView>
-	   	</h:form>
-	   
+		</h:form>
+
 	</ui:define>
 </ui:composition>
 
