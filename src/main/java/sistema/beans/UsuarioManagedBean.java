@@ -31,7 +31,7 @@ public class UsuarioManagedBean {
 		return usuarios;
 	}
 
-	/*public String salvar() {
+	public String salvar() {
 	      	//servico.salvar(usuario);
 	  		//usuario = new Usuario();
 	         return "inicio.xhtml";
@@ -39,6 +39,6 @@ public class UsuarioManagedBean {
 	 
 	 public String voltar(){
 		 return "inicio.xhtml";
-	 }*/
+	 }
 
 }

@@ -29,7 +29,7 @@ public class Usuario implements Serializable {
 	private String nome;
 
 	@Temporal(TemporalType.DATE)
-	private Date dataNasimento;
+	private Date dataNascimento;
 
 	@ManyToMany(mappedBy = "diretores")
 	private ArrayList<Equipe> equipes = new ArrayList<Equipe>();
@@ -125,15 +125,15 @@ public class Usuario implements Serializable {
 
 	}
 
-	public Date getDataNasimento() {
+	public Date getDataNascimento() {
 
-		return dataNasimento;
+		return dataNascimento;
 
 	}
 
-	public void setDataNasimento(Date dataNasimento) {
+	public void setDataNascimento(Date dataNascimento) {
 
-		this.dataNasimento = dataNasimento;
+		this.dataNascimento = dataNascimento;
 
 	}
 
