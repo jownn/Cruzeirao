@@ -32,13 +32,13 @@ public class UsuarioManagedBean {
 	}
 
 	public String salvar() {
-	      	//servico.salvar(usuario);
-	  		//usuario = new Usuario();
+	      	servico.salvar(usuario);
+	  		usuario = new Usuario();
 	         return "inicio.xhtml";
 	     }
 	 
 	 public String voltar(){
-		 return "inicio.xhtml";
+		 return "login.xhtml";
 	 }
 
 }
