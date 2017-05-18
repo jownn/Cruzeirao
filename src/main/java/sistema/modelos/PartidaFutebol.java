@@ -1,6 +1,8 @@
 package sistema.modelos;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.OneToMany;
 
 //DUVIDAS NESSA CLASSE SOBRE COMO PERSISRTIR UMA HERANÇA
@@ -10,20 +12,20 @@ public class PartidaFutebol{
 
 	//ATRIBUTOS
 	@OneToMany( targetEntity=Gol.class )
-	private ArrayList<Gol> golsMandantes= new ArrayList<Gol>();
+	private List<Gol> golsMandantes= new ArrayList<Gol>();
 
 	@OneToMany( targetEntity=Gol.class )
-	private ArrayList<Gol> golsVisitantes = new ArrayList<Gol>();
+	private List<Gol> golsVisitantes = new ArrayList<Gol>();
 
 	@OneToMany( targetEntity=Cartao.class )
-	private ArrayList<Cartao> cartoesMandante = new ArrayList<Cartao>();
+	private List<Cartao> cartoesMandante = new ArrayList<Cartao>();
 
 	@OneToMany( targetEntity=Cartao.class )
-	private ArrayList<Cartao> cartoesVisitante = new ArrayList<Cartao>();
+	private List<Cartao> cartoesVisitante = new ArrayList<Cartao>();
 
-	public ArrayList<Gol> golsPenaliMandante() {
+	public List<Gol> golsPenaliMandante() {
 
-		ArrayList<Gol> result = new ArrayList<Gol>();
+		List<Gol> result = new ArrayList<Gol>();
 
 		for (Gol gol : golsMandantes) {
 
@@ -54,19 +56,19 @@ public class PartidaFutebol{
 	}	
 
 	//GETTERS AND SETTERS
-	public ArrayList<Gol> getGolsMandantes() {
+	public List<Gol> getGolsMandantes() {
 
 		return golsMandantes;
 
 	}
 
-	public void setGolsMandantes(ArrayList<Gol> golsMandantes) {
+	public void setGolsMandantes(List<Gol> golsMandantes) {
 
 		this.golsMandantes = golsMandantes;
 
 	}
 
-	public ArrayList<Gol> getGolsVisitantes() {
+	public List<Gol> getGolsVisitantes() {
 
 		return golsVisitantes;
 
@@ -78,7 +80,7 @@ public class PartidaFutebol{
 
 	}
 
-	public ArrayList<Cartao> getCartoesMandante() {
+	public List<Cartao> getCartoesMandante() {
 
 		return cartoesMandante;
 
@@ -90,7 +92,7 @@ public class PartidaFutebol{
 
 	}
 
-	public ArrayList<Cartao> getCartoesVisitante() {
+	public List<Cartao> getCartoesVisitante() {
 
 		return cartoesVisitante;
 

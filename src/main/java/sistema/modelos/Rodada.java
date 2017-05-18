@@ -2,6 +2,8 @@ package sistema.modelos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +27,7 @@ public class Rodada implements Serializable{
 	private Grupo grupo;
 
 	@OneToMany
-	private ArrayList<Partida> partidas= new ArrayList<Partida>();
+	private List<Partida> partidas= new ArrayList<Partida>();
 
 	//GETTERS AND SETTERS
 	public int getNumero() {
@@ -52,7 +54,7 @@ public class Rodada implements Serializable{
 
 	}
 
-	public ArrayList<Partida> getPartidas() {
+	public List<Partida> getPartidas() {
 
 		return partidas;
 

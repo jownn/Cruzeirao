@@ -3,6 +3,8 @@ package sistema.modelos;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,13 +34,13 @@ public class Usuario implements Serializable {
 	private Date dataNascimento;
 
 	@ManyToMany(mappedBy = "diretores")
-	private ArrayList<Equipe> equipes = new ArrayList<Equipe>();
+	private List<Equipe> equipes = new ArrayList<Equipe>();
 
 	@OneToMany(mappedBy = "usuario")
-	private ArrayList<Inscrito> inscricoes = new ArrayList<Inscrito>();
+	private List<Inscrito> inscricoes = new ArrayList<Inscrito>();
 
 	@OneToMany
-	private ArrayList<Campeonato> campeonatos = new ArrayList<Campeonato>();
+	private List<Campeonato> campeonatos = new ArrayList<Campeonato>();
 
 	private String telefoneFixo;
 
@@ -137,7 +139,7 @@ public class Usuario implements Serializable {
 
 	}
 
-	public ArrayList<Equipe> getEquipes() {
+	public List<Equipe> getEquipes() {
 
 		return equipes;
 
@@ -149,7 +151,7 @@ public class Usuario implements Serializable {
 
 	}
 
-	public ArrayList<Inscrito> getInscricoes() {
+	public List<Inscrito> getInscricoes() {
 
 		return inscricoes;
 
@@ -161,7 +163,7 @@ public class Usuario implements Serializable {
 
 	}
 
-	public ArrayList<Campeonato> getCampeonatos() {
+	public List<Campeonato> getCampeonatos() {
 
 		return campeonatos;
 

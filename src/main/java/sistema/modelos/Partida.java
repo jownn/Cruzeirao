@@ -3,6 +3,8 @@ package sistema.modelos;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,7 +40,7 @@ public class Partida extends PartidaFutebol implements Serializable {
 	private Partida proxPartida;
 
 	@OneToMany
-	private ArrayList<Juiz> juizes = new ArrayList<Juiz>();
+	private List<Juiz> juizes = new ArrayList<Juiz>();
 
 	@ManyToOne
 	private Grupo grupo;
@@ -118,7 +120,7 @@ public class Partida extends PartidaFutebol implements Serializable {
 
 	}
 
-	public ArrayList<Juiz> getJuizes() {
+	public List<Juiz> getJuizes() {
 
 		return juizes;
 

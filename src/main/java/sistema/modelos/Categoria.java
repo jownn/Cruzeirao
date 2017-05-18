@@ -2,6 +2,8 @@ package sistema.modelos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,13 +28,13 @@ public class Categoria implements Serializable{
 	private int nascidosApartirDe;
 
 	@OneToMany(mappedBy="categoria")
-	private ArrayList<Inscricao> inscricoes= new ArrayList<Inscricao>();
+	private List<Inscricao> inscricoes= new ArrayList<Inscricao>();
 
 	@ManyToOne
 	private Campeonato campeonato;
 
 	@OneToMany(mappedBy="categoria")
-	private ArrayList<Fase> fases =  new ArrayList<Fase>();;
+	private List<Fase> fases =  new ArrayList<Fase>();
 
 	private int minJogadores;
 
@@ -78,7 +80,7 @@ public class Categoria implements Serializable{
 
 	}
 
-	public ArrayList<Inscricao> getInscricoes() {
+	public List<Inscricao> getInscricoes() {
 
 		return inscricoes;
 
@@ -102,7 +104,7 @@ public class Categoria implements Serializable{
 
 	}
 
-	public ArrayList<Fase> getFases() {
+	public List<Fase> getFases() {
 
 		return fases;
 

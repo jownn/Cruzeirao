@@ -1,10 +1,14 @@
 package sistema.modelos;
 
+import java.util.List;
 import java.io.Serializable;
+import java.util.ArrayList;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 import sistema.enums.TipoJuiz;
 
@@ -21,7 +25,9 @@ public class Juiz implements Serializable {
 	private int codigoJuiz;
 
 	private Usuario usuario;
-
+	
+	@ManyToMany(mappedBy="juizes")
+	private List<Campeonato> campeonatos = new ArrayList<Campeonato>();
 
 	//GETTERS AND SETTERS
 	public Usuario getUsuario() {
@@ -54,6 +60,14 @@ public class Juiz implements Serializable {
 
 	public void setTipo(TipoJuiz tipo) {
 		this.tipo = tipo;
+	}
+
+	public List<Campeonato> getCampeonatos() {
+		return campeonatos;
+	}
+
+	public void setCampeonatos(List<Campeonato> campeonatos) {
+		this.campeonatos = campeonatos;
 	}
 	
 

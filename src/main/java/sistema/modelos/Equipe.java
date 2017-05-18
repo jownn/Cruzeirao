@@ -3,6 +3,8 @@ package sistema.modelos;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +31,7 @@ public class Equipe implements Serializable{
 	private String cidade;
 
 	@ManyToMany
-	private ArrayList<Usuario> diretores= new ArrayList<Usuario>();
+	private List<Usuario> diretores= new ArrayList<Usuario>();
 
 	//GETTERS AND SETTERS
 	public String getNome() {
@@ -68,7 +70,7 @@ public class Equipe implements Serializable{
 
 	}
 
-	public ArrayList<Usuario> getDiretores() {
+	public List<Usuario> getDiretores() {
 
 		return diretores;
 

@@ -3,10 +3,14 @@ package sistema.modelos;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,14 +28,14 @@ public class Campeonato implements Serializable{
 	private String nome;
 	
 	@OneToMany
+	private List<Local> locais = new ArrayList<Local>();
 
-	private ArrayList<Local> locais = new ArrayList<Local>();
-
-	@OneToMany
-	private ArrayList<Juiz> juizes= new ArrayList<Juiz>();
+	//@OneToMany
+	@ManyToMany
+	private List<Juiz> juizes= new ArrayList<Juiz>();
 
 	@OneToMany(mappedBy="campeonato")
-	private ArrayList<Categoria> categorias= new ArrayList<Categoria>();
+	private List<Categoria> categorias= new ArrayList<Categoria>();
 
 	@Temporal(TemporalType.DATE)
 	private Date  dataInicioInscricao;
@@ -60,7 +64,7 @@ public class Campeonato implements Serializable{
 
 	}
 
-	public ArrayList<Local> getLocais() {
+	public List<Local> getLocais() {
 
 		return locais;
 
@@ -72,7 +76,7 @@ public class Campeonato implements Serializable{
 
 	}
 
-	public ArrayList<Juiz> getJuizes() {
+	public List<Juiz> getJuizes() {
 
 		return juizes;
 
@@ -84,7 +88,7 @@ public class Campeonato implements Serializable{
 
 	}
 
-	public ArrayList<Categoria> getCategorias() {
+	public List<Categoria> getCategorias() {
 
 		return categorias;
 

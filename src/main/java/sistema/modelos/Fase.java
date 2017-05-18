@@ -3,6 +3,8 @@ package sistema.modelos;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,7 +39,7 @@ public class Fase implements Serializable{
 	private Categoria categoria;
 
 	@OneToMany(mappedBy="fase")
-	private ArrayList<Grupo> grupos= new ArrayList<Grupo>();
+	private List<Grupo> grupos= new ArrayList<Grupo>();
 
 	private int numero;
 
@@ -78,7 +80,7 @@ public class Fase implements Serializable{
 
 	}
 
-	public ArrayList<Grupo> getGrupos() {
+	public List<Grupo> getGrupos() {
 
 		return grupos;
 
