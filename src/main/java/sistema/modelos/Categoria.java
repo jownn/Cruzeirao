@@ -1,104 +1,143 @@
 package sistema.modelos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Categoria {
-	
-	private int anoMin;
-	private char sexo;
-	private boolean habCadTime;
-	private boolean habCadJog;
-	private List<Inscricao> inscricao = new ArrayList<Inscricao>();
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import sistema.enums.*;
+
+@Entity
+public class Categoria implements Serializable{
+
+	//ATRIBUTOS
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int codigoCategoria;
+
 	private String nome;
+
+	private int nascidosApartirDe;
+
+	@OneToMany(mappedBy="categoria")
+	private List<Inscricao> inscricoes= new ArrayList<Inscricao>();
+
+	@ManyToOne
 	private Campeonato campeonato;
-	private List<Chave> chaves = new ArrayList<Chave>();
-	private boolean status;
-	private Inscricao campeao;
-	private Inscricao vice;
-	private Inscricao terceiroLugar;
-	private Inscricao quartoLugar;
-	
-	public Inscricao getCampeao() {
-		return campeao;
-	}
-	public void setCampeao(Inscricao campeao) {
-		this.campeao = campeao;
-	}
-	public Inscricao getVice() {
-		return vice;
-	}
-	public void setVice(Inscricao vice) {
-		this.vice = vice;
-	}
-	public Inscricao getTerceiroLugar() {
-		return terceiroLugar;
-	}
-	public void setTerceiroLugar(Inscricao terceiroLugar) {
-		this.terceiroLugar = terceiroLugar;
-	}
-	public Inscricao getQuartoLugar() {
-		return quartoLugar;
-	}
-	public void setQuartoLugar(Inscricao quartoLugar) {
-		this.quartoLugar = quartoLugar;
-	}
-	public int getAnoMin() {
-		return anoMin;
-	}
-	public void setAnoMin(int anoMin) {
-		this.anoMin = anoMin;
-	}
-	public char getSexo() {
-		return sexo;
-	}
-	public void setSexo(char sexo) {
-		this.sexo = sexo;
-	}
-	public boolean isHabCadTime() {
-		return habCadTime;
-	}
-	public void setHabCadTime(boolean habCadTime) {
-		this.habCadTime = habCadTime;
-	}
-	public boolean isHabCadJog() {
-		return habCadJog;
-	}
-	public void setHabCadJog(boolean habCadJog) {
-		this.habCadJog = habCadJog;
-	}
-	public List<Inscricao> getInscricao() {
-		return inscricao;
-	}
-	public void addInscricao(Inscricao inscricao) {
-		this.inscricao.add(inscricao);
-	}
+
+	@OneToMany(mappedBy="categoria")
+	private List<Fase> fases =  new ArrayList<Fase>();
+
+	private int minJogadores;
+
+	private int maxJogadores;
+
+	private Sexo sexo; 
+
+
+	//GETTERS AND SETTERS
 	public String getNome() {
+
 		return nome;
+
 	}
+
+	public Sexo getSexo() {
+
+		return sexo;
+
+	}
+
+	public void setSexo(Sexo sexo) {
+
+		this.sexo = sexo;
+
+	}
+
 	public void setNome(String nome) {
+
 		this.nome = nome;
+
 	}
+
+	public int getNascidosApartirDe() {
+
+		return nascidosApartirDe;
+
+	}
+
+	public void setNascidosApartirDe(int nascidosApartirDe) {
+
+		this.nascidosApartirDe = nascidosApartirDe;
+
+	}
+
+	public List<Inscricao> getInscricoes() {
+
+		return inscricoes;
+
+	}
+
+	public void setInscricoes(ArrayList<Inscricao> inscricoes) {
+
+		this.inscricoes = inscricoes;
+
+	}
+
 	public Campeonato getCampeonato() {
+
 		return campeonato;
+
 	}
+
 	public void setCampeonato(Campeonato campeonato) {
+
 		this.campeonato = campeonato;
+
 	}
-	public List<Chave> getChaves() {
-		return chaves;
+
+	public List<Fase> getFases() {
+
+		return fases;
+
 	}
-	public void addChave(Chave chave) {
-		chaves.add(chave);
+
+	public void setFases(ArrayList<Fase> fases) {
+
+		this.fases = fases;
+
 	}
-	public boolean isStatus() {
-		return status;
+
+	public int getMinJogadores() {
+
+		return minJogadores;
+
 	}
-	public void setStatus(boolean status) {
-		this.status = status;
+
+	public void setMinJogadores(int minJogadores) {
+
+		this.minJogadores = minJogadores;
+
 	}
-	
-	
-	
-	
+
+	public int getMaxJogadores() {
+
+		return maxJogadores;
+
+	}
+
+	public void setMaxJogadores(int maxJogadores) {
+
+		this.maxJogadores = maxJogadores;
+
+	}
+
 }

@@ -1,100 +1,126 @@
 package sistema.modelos;
 
-import java.awt.Image;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.primefaces.event.FlowEvent;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
-public class Inscricao {
-	
-	private Campeonato campeonato;
+@Entity
+public class Inscricao implements Serializable {
+
+	//ATRIBUTOS
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long numero;
+
+	private boolean pagamento;
+
+	private boolean validada;
+
+	@OneToMany(mappedBy="inscricao")
+	private List<Inscrito> inscritos = new ArrayList<Inscrito>();
+
+	@ManyToOne
 	private Categoria categoria;
-	private boolean status;
-	private Image pagamento;
-	private Time time;
-	private Usuario tecnico;
-	private Usuario massagista;
-	private Usuario auxiliar;
-	private Usuario preparadorFisico;
-	private Usuario diretor;
-	private List<Usuario> jogadores = new ArrayList<Usuario>();
-	
-	public Campeonato getCampeonato() {
-		return campeonato;
-	}
-	public void setCampeonato(Campeonato campeonato) {
-		this.campeonato = campeonato;
-	}
-	public Categoria getCategoria() {
-		return categoria;
-	}
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
-	public boolean isStatus() {
-		return status;
-	}
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-	public Image getPagamento() {
-		return pagamento;
-	}
-	public void setPagamento(Image pagamento) {
-		this.pagamento = pagamento;
-	}
-	public Time getTime() {
-		return time;
-	}
-	public void setTime(Time time) {
-		this.time = time;
-	}
-	
-	public Usuario getTecnico() {
-		return tecnico;
-	}
-	public void setTecnico(Usuario tecnico) {
-		this.tecnico = tecnico;
-	}
-	public Usuario getMassagista() {
-		return massagista;
-	}
-	public void setMassagista(Usuario massagista) {
-		this.massagista = massagista;
-	}
-	public Usuario getAuxiliar() {
-		return auxiliar;
-	}
-	public void setAuxiliar(Usuario auxiliar) {
-		this.auxiliar = auxiliar;
-	}
-	public Usuario getPreparadorFisico() {
-		return preparadorFisico;
-	}
-	public void setPreparadorFisico(Usuario preparadorFisico) {
-		this.preparadorFisico = preparadorFisico;
-	}
-	public Usuario getDiretor() {
-		return diretor;
-	}
-	public void setDiretor(Usuario diretor) {
-		this.diretor = diretor;
-	}
-	
-	public List<Usuario> getJogadores() {
-		return jogadores;
-	}
-	public void addJogador(Usuario jogador) {
-		jogadores.add(jogador);
-	}
-	
-	public String salvar(){
-		
-		
-		return "inscricao.xhtml";
-	}
-	
 
-	
+	@OneToMany
+	private List<Partida> partidas = new ArrayList<Partida>();
+
+	@ManyToOne
+	private Equipe equipe;
+
+
+	//GETTERS AND SETTERS
+	public long getNumero() {
+
+		return numero;
+
+	}
+
+	public void setNumero(long numero) {
+
+		this.numero = numero;
+
+	}
+
+	public boolean isPagamento() {
+
+		return pagamento;
+
+	}
+
+	public void setPagamento(boolean pagamento) {
+
+		this.pagamento = pagamento;
+
+	}
+
+	public boolean isValidada() {
+
+		return validada;
+
+	}
+
+	public void setValidada(boolean validada) {
+
+		this.validada = validada;
+
+	}
+
+	public List<Inscrito> getInscritos() {
+
+		return inscritos;
+
+	}
+
+	public void setInscritos(ArrayList<Inscrito> inscritos) {
+
+		this.inscritos = inscritos;
+
+	}
+
+	public Categoria getCategoria() {
+
+		return categoria;
+
+	}
+
+	public void setCategoria(Categoria categoria) {
+
+		this.categoria = categoria;
+
+	}
+
+	public List<Partida> getPartidas() {
+
+		return partidas;
+
+	}
+
+	public void setPartidas(ArrayList<Partida> partidas) {
+
+		this.partidas = partidas;
+
+	}
+
+	public Equipe getEquipe() {
+
+		return equipe;
+
+	}
+
+	public void setEquipe(Equipe equipe) {
+
+		this.equipe = equipe;
+
+	}
+
 }

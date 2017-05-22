@@ -1,29 +1,56 @@
 package sistema.service;
 
-import java.util.ArrayList;
 import java.util.List;
-
+import sistema.dao.CampeonatoDAO;
 import sistema.modelos.Campeonato;
+import sistema.modelos.Categoria;
 
 public class CampeonatoService {
 
-	private ArrayList <Campeonato> campeonatos = new ArrayList<Campeonato>();
-	
-	
-	public void setCampeonatos(ArrayList<Campeonato> campeonatos) {
-		this.campeonatos = campeonatos;
+	private CampeonatoDAO campeonatoDAO = new CampeonatoDAO();
+
+	public Campeonato salvar(Campeonato campeonato) {
+
+		campeonato = campeonatoDAO.save(campeonato);
+		campeonatoDAO.closeEntityManager();
+		return campeonato;
 	}
 
-
-	public void salvar(Campeonato campeonato)
-	{
-	    campeonatos.add(campeonato);
+	public List<Campeonato> getCampeonatos() {
+		List<Campeonato> list = campeonatoDAO.getAll(Campeonato.class);
+		campeonatoDAO.closeEntityManager();
+		return list;
 	}
-	
 
-	public List <Campeonato> getCampeonatos()
-	{	
-		return campeonatos;	
+	public void alterar(Campeonato campeonato) {
+
+		campeonatoDAO.save(campeonato);
+		campeonatoDAO.closeEntityManager();
+
 	}
-	
+
+	public void remover(Campeonato campeonato) {
+
+		campeonato = campeonatoDAO.getById(Campeonato.class, campeonato.getCodigoCampeonato());
+		campeonatoDAO.remove(campeonato);
+		campeonatoDAO.closeEntityManager();
+	}
+
+	public Campeonato pesquisar(Campeonato campeonato) {
+
+		campeonato = campeonatoDAO.getById(Campeonato.class, campeonato.getCodigoCampeonato());
+		campeonatoDAO.closeEntityManager();
+		return campeonato;
+	}
+
+	public List<Categoria> pesquisarCategoriasCampeonato(Campeonato campeonato) {
+
+		List<Categoria> produtos;
+
+		campeonato = campeonatoDAO.getById(Campeonato.class, campeonato.getCodigoCampeonato());
+		produtos = campeonato.getCategorias();
+
+		return produtos;
+	}
+
 }

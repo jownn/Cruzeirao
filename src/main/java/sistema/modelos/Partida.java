@@ -1,52 +1,159 @@
 package sistema.modelos;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public class Partida {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-	private Time time1;
-	private Time time2;
-	private int placarTime1;
-	private int placarTime2;
-	private Local local;
+@Entity
+public class Partida extends PartidaFutebol implements Serializable {
+
+	//ATRIBUTOS
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int numero;
+
+	@ManyToOne
+	private Inscricao equipeMandante;
+
+	@ManyToOne
+	private Inscricao equipeVisitante;
+
+	@Temporal(TemporalType.DATE)
 	private Date data;
+
+	@ManyToOne
+	private Local local;
+
+	@ManyToOne
+	private Partida proxPartida;
+
+	@OneToMany
+	private List<Juiz> juizes = new ArrayList<Juiz>();
+
+	@ManyToOne
+	private Grupo grupo;
+
+	private String relatoJuiz;	
 	
-	public Time getTime1() {
-		return time1;
+	//GETTERS AND SETTERS
+	public int getNumero() {
+
+		return numero;
+
 	}
-	public void setTime1(Time time1) {
-		this.time1 = time1;
+
+	public void setNumero(int numeri) {
+
+		this.numero = numeri;
+
 	}
-	public Time getTime2() {
-		return time2;
+
+	public Inscricao getEquipeMandante() {
+
+		return equipeMandante;
+
 	}
-	public void setTime2(Time time2) {
-		this.time2 = time2;
+
+	public void setEquipeMandante(Inscricao equipeMandante) {
+
+		this.equipeMandante = equipeMandante;
+
+	}
+
+	public Inscricao getEquipeVisitante() {
+
+		return equipeVisitante;
+
+	}
+
+	public void setEquipeVisitante(Inscricao equipeVisitante) {
+
+		this.equipeVisitante = equipeVisitante;
+
+	}
+
+	public Date getData() {
+
+		return data;
+
+	}
+
+	public void setData(Date data) {
+
+		this.data = data;
+
 	}
 
 	public Local getLocal() {
+
 		return local;
+
 	}
+
 	public void setLocal(Local local) {
+
 		this.local = local;
+
 	}
-	public Date getData() {
-		return data;
+
+	public Partida getProxPartida() {
+
+		return proxPartida;
+
 	}
-	public void setData(Date data) {
-		this.data = data;
+
+	public void setProxPartida(Partida proxPartida) {
+
+		this.proxPartida = proxPartida;
+
 	}
-	public int getPlacarTime1() {
-		return placarTime1;
+
+	public List<Juiz> getJuizes() {
+
+		return juizes;
+
 	}
-	public void setPlacarTime1(int placarTime1) {
-		this.placarTime1 = placarTime1;
+
+	public void setJuizes(ArrayList<Juiz> juizes) {
+
+		this.juizes = juizes;
+
 	}
-	public int getPlacarTime2() {
-		return placarTime2;
+
+	public Grupo getGrupo() {
+
+		return grupo;
+
 	}
-	public void setPlacarTime2(int placarTime2) {
-		this.placarTime2 = placarTime2;
+
+	public void setGrupo(Grupo grupo) {
+
+		this.grupo = grupo;
+
 	}
-	
+
+	public String getRelatoJuiz() {
+
+		return relatoJuiz;
+
+	}
+
+	public void setRelatoJuiz(String relatoJuiz) {
+
+		this.relatoJuiz = relatoJuiz;
+
+	}
+
 }
