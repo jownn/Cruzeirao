@@ -25,42 +25,42 @@
  					
  				  <p:outputLabel for="nome" value="#{msg['pages.cadastroCategoria.nome']}" />
 	              <p:inputText id="nome" value="#{categoriaManagedBean.categoria.nome}"
-	              required="true" requiredMessage="#{msg['pages.comuns.cadastroCategoria.obrigatorio']}" />
+	              required="true" requiredMessage="#{msg['pages.cadastroCategoria.obrigatorio']}" />
 				  <p:message for="nome"/>	  
 				  
 				  <p:outputLabel for="nascidos" value="#{msg['pages.cadastroCategoria.nascidos']}" />
-	        	  <p:calendar id="nascidos" value="#{categoriaManagedBean.categoria.nascidosApartirDe}" 
-	        	  locale="br" effect="slide" 
+	        	  <p:inputText id="nascidos" value="#{categoriaManagedBean.categoria.nascidosApartirDe}" 
 	        	  required="true" requiredMessage="#{msg['pages.cadastroCategoria.obrigatorio']}"/>
 	        	  <p:message for="nascidos"/>	
 	        	  
-	        	 <p:outputLabel for="maxJog" value="#{msg['pages.cadastroCategoria.maxJog']}" />
-	              <p:inputText id="maxJog" value="#{categoriaManagedBean.categoria.maxJogadores}"
-	              required="true" requiredMessage="#{msg['pages.comuns.cadastroCategoria.obrigatorio']}" />
-				  <p:message for="maxJog"/>	
-				  
-				  <p:outputLabel for="minJog" value="#{msg['pages.cadastroCategoria.minJog']}" />
+	        	   <p:outputLabel for="minJog" value="#{msg['pages.cadastroCategoria.minJog']}" />
 	              <p:inputText id="minJog" value="#{categoriaManagedBean.categoria.minJogadores}"
-	              required="true" requiredMessage="#{msg['pages.comuns.cadastroCategoria.obrigatorio']}" />
+	              required="true" requiredMessage="#{msg['pages.cadastroCategoria.obrigatorio']}" />
 				  <p:message for="minJog"/>
+				  
+	        	  <p:outputLabel for="maxJog" value="#{msg['pages.cadastroCategoria.maxJog']}" />
+	              <p:inputText id="maxJog" value="#{categoriaManagedBean.categoria.maxJogadores}"
+	              required="true" requiredMessage="#{msg['pages.cadastroCategoria.obrigatorio']}" />
+				  <p:message for="maxJog"/>	
 				  
 				  <p:outputLabel for="sexo" value="#{msg['pages.cadastroCategoria.sexo']}" />
 	              <p:inputText id="sexo" value="#{categoriaManagedBean.categoria.sexo}"
-	              required="true" requiredMessage="#{msg['pages.comuns.cadastroCategoria.obrigatorio']}" />
+	              required="true" requiredMessage="#{msg['pages.cadastroCategoria.obrigatorio']}" />
 				  <p:message for="sexo"/>
 	              
-	              <p:outputLabel value="#{msg['pages.cadastroCategoria.campeonato.nome']}" />
-				<p:selectOneMenu value="#{categoriaManagedBean.campeonato}"
-				converter="converterCampeonato">
+	            <p:outputLabel for="camp" value="#{msg['pages.cadastroCategoria.campeonato.nome']}" />
+				<p:selectOneMenu id="camp" value="#{categoriaManagedBean.campeonato}" converter="converterCampeonato" 
+				required="true" requiredMessage="#{msg['pages.cadastroCategoria.obrigatorio']}">
 				<f:selectItem itemValue="" itemLabel="#{msg['pages.cadastroCategoria.campeonato.msg']}" />
 				<f:selectItems value="#{categoriaManagedBean.campeonatos}" var="aux"
-					itemValue="#{aux}" itemLabel="#{aux.nome}" />
-				</p:selectOneMenu>	
-				  
+					itemValue="#{aux}" itemLabel="#{aux.nome}"  />
+				</p:selectOneMenu>
+				<p:message for="camp"/>
+				
 	       	  </h:panelGrid>
 			   			<p:commandButton value="#{msg['pages.cadastroCategoria.salvar']}"
 			   			id="btnAll" process="@all" 
-			   			update="grid" action="#{CategoriaManagedBean.salvar()}" style="text-align: center"/>
+			   			update="grid" action="#{categoriaManagedBean.salvar()}" style="text-align: center"/>
 	       </h:form>
 			</div>
 			</p:panel>
@@ -76,16 +76,16 @@
             <p:ajax event="rowEdit" listener="#{categoriaManagedBean.onRowEdit}" update="tableCategorias"/>
 
 			<p:column headerText="#{msg['pages.cadastroCategoria.codigo']}">
-				<h:outputText value="#{cat.codigo}" />
+				<h:outputText value="#{cat.codigoCategoria}" />
 			</p:column>
 
-			<p:column headerText="#{msg['pages.cadastroCategoria.descricao']}">
+			<p:column headerText="#{msg['pages.cadastroCategoria.nascidos']}">
 				<p:cellEditor>
 					<f:facet name="output">
-						<p:outputLabel value="#{cat.descricao}" />
+						<p:outputLabel value="#{cat.nascidosApartirDe}" />
 					</f:facet>
 					<f:facet name="input">
-						<p:inputText id="descricao" value="#{cat.descricao}"
+						<p:inputText id="nascidosApartirDe" value="#{cat.nascidosApartirDe}"
 							style="width:100%" />
 					</f:facet>
 				</p:cellEditor>
@@ -95,7 +95,7 @@
 			<p:column headerText="#{msg['pages.cadastroCategoria.campeonato.nome']}">
 				<p:cellEditor>
 					<f:facet name="output">
-						<p:outputLabel value="#{catprod.campeonato.nome}" />
+						<p:outputLabel value="#{cat.campeonato.nome}" />
 					</f:facet>
 					<f:facet name="input">
 						<p:selectOneMenu value="#{cat.campeonato}"
@@ -105,17 +105,6 @@
 								var="aux" itemValue="#{aux}" itemLabel="#{aux.nome}" />
 						</p:selectOneMenu>
 
-					</f:facet>
-				</p:cellEditor>
-			</p:column>
-
-			<p:column headerText="#{msg['pages.cadastroCategoria.valor']}">
-				  <p:cellEditor>
-					<f:facet name="output">
-						<p:outputLabel value="#{cat.valor}" />
-					</f:facet>
-					<f:facet name="input">
-						<p:inputText id="valor" value="#{cat.valor}" style="width:100%" />
 					</f:facet>
 				</p:cellEditor>
 			</p:column>

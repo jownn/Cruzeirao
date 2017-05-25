@@ -7,7 +7,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:define name="title">
-	<h:outputText value="#{msg['pages.comuns.cadastroTime.titulo']}" />
+	<h:outputText value="#{msg['pages.cadastroEquipe.titulo']}" />
 </ui:define>
 
 <ui:define name="principal">
@@ -15,34 +15,34 @@
 		<meta charset="UTF-8" />
 	</h:head>
 		<h:body>
-			<p:panel id="basic" header="#{msg['pages.comuns.cadastroTime.titulo']}" background="#ffffff" style="text-align: center">
+			<p:panel id="basic" header="#{msg['pages.cadastroEquipe.titulo']}" background="#ffffff" style="text-align: center">
 			<div align="center">
 			<h:form>	
 			  <h:panelGrid id="grid" columns="3" cellpadding="5"> 
 			   
-			      	<p:outputLabel for="nome" value="#{msg['pages.comuns.cadastroTime.nome']}"/>
-	        		<p:inputText id="nome" value="#{timeManagedBean.time.nome}" 
-	        		required="true" requiredMessage="#{msg['pages.comuns.cadastroTime.obrigatorio']}" />
+			      	<p:outputLabel for="nome" value="#{msg['pages.cadastroEquipe.nome']}"/>
+	        		<p:inputText id="nome" value="#{equipeManagedBean.equipe.nome}" 
+	        		required="true" requiredMessage="#{msg['pages.cadastroEquipe.obrigatorio']}" />
 				  	<p:message for="nome"/>
 				  	
-				  	<p:outputLabel for="cidade" value="#{msg['pages.comuns.cadastroTime.cidade']}" />
+				  	<p:outputLabel for="cidade" value="#{msg['pages.cadastroEquipe.cidade']}" />
 	        		<p:selectOneMenu id="cidade" value="#{fakeManagedBean.cidades}" panelStyle="width:180px"
                          effect="fade" var="cid" style="width:160px" filter="true" filterMatchMode="startsWith">
-           			<f:selectItem itemLabel="#{msg['pages.comuns.cadastroTime.selecione']}" itemValue="" noSelectionOption="true" />
+           			<f:selectItem itemLabel="#{msg['pages.cadastroEquipe.selecione']}" itemValue="" noSelectionOption="true" />
            			<f:selectItems value="#{fakeManagedBean.cidades}" var="cidade" itemLabel="#{cidade}" itemValue="#{cidade}" />
                 			<h:outputText value="#{cid}" />
         			</p:selectOneMenu>
 				  	<p:message for="cidade"/>
 				  	
-					<p:outputLabel value="#{msg['pages.comuns.cadastroTime.logo']}"/>
+					<p:outputLabel value="#{msg['pages.cadastroEquipe.logo']}"/>
 				  	<p:fileUpload value="#{fileUploadView.file}" mode="advanced" skinSimple="true"
-				  	label="#{msg['pages.comuns.cadastroTime.escolher']}" 
-				  	uploadLabel="#{msg['pages.comuns.cadastroTime.enviar']}" 
-				  	cancelLabel="#{msg['pages.comuns.cadastroTime.cancelar']}" />
+				  	label="#{msg['pages.cadastroEquipe.escolher']}" 
+				  	uploadLabel="#{msg['pages.cadastroEquipe.enviar']}" 
+				  	cancelLabel="#{msg['pages.cadastroEquipe.cancelar']}" />
 				 </h:panelGrid>
-			   			<p:commandButton value="#{msg['pages.comuns.cadastroTime.salvar']}"
+			   			<p:commandButton value="#{msg['pages.cadastroEquipe.salvar']}"
 			   			id="btnAll" process="@all" 
-			   			update="grid" action="#{TimeManagedBean.salvar()}" style="text-align: center"/>
+			   			update="grid" action="#{EquipeManagedBean.salvar()}" style="text-align: center"/>
 	
 	       </h:form>
 			</div>

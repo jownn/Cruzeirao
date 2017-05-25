@@ -17,10 +17,9 @@
 		<h:body>
 		<p:panel id="basic" header="#{msg['pages.cadastroCampeonato.titulo']}" background="#ffffff" style="text-align: center">
 			<div align="center">
-			<h:form>	
-			  <h:panelGrid id="grid" columns="3" cellpadding="5"> 
- 					
- 					
+			<h:form id="formCampeonatos">	
+			  <h:panelGrid columns="3" cellpadding="5"> 
+ 				
  				  <p:outputLabel for="nome" value="#{msg['pages.cadastroCampeonato.nome']}" />
 	              <p:inputText id="nome" value="#{campeonatoManagedBean.campeonato.nome}"
 	              required="true" requiredMessage="#{msg['pages.comuns.cadastroCampeonato.obrigatorio']}" />
@@ -46,7 +45,8 @@
 	       	  </h:panelGrid>
 			   			<p:commandButton value="#{msg['pages.cadastroCampeonato.salvar']}"
 			   			id="btnAll" process="@all" 
-			   			update="grid" action="#{campeonatoManagedBean.salvar()}" style="text-align: center"/>
+			   			update=":formCampeonatos, :formTableCampeonatos"
+			   			action="#{campeonatoManagedBean.salvar()}" style="text-align: center"/>
 	       </h:form>
 			</div>
 			</p:panel>
