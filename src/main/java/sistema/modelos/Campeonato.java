@@ -86,7 +86,11 @@ public class Campeonato implements Serializable{
 		this.juizes = juizes;
 
 	}
-
+	
+	public void addCategoria(Categoria categoria){
+		categorias.add(categoria);
+	}
+	
 	public List<Categoria> getCategorias() {
 
 		return categorias;

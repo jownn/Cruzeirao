@@ -47,7 +47,7 @@ public class CampeonatoManagedBean {
 
 	}
 
-	public DataModel<Campeonato> getCampeonatoes() {
+	public DataModel<Campeonato> getCampeonatos() {
 		if (campeonatos == null)
 			campeonatos = servico.getCampeonatos();
 

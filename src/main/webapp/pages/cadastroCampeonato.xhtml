@@ -46,10 +46,67 @@
 	       	  </h:panelGrid>
 			   			<p:commandButton value="#{msg['pages.cadastroCampeonato.salvar']}"
 			   			id="btnAll" process="@all" 
-			   			update="grid" action="#{CampeonatoManagedBean.salvar()}" style="text-align: center"/>
+			   			update="grid" action="#{campeonatoManagedBean.salvar()}" style="text-align: center"/>
 	       </h:form>
 			</div>
 			</p:panel>
 		</h:body>
+		
+		<h3><p:outputLabel value="#{msg['pages.cadastroCampeonato.tableTitle']}"/></h3>
+	<h:form id="formTableCampeonatos">
+	
+	    <p:growl id="growl" showDetail="true" />
+	
+		<p:dataTable value="#{campeonatoManagedBean.campeonatos}" var="c"
+			editable="true" id="tableCategorias"
+			selectionMode="single" selection="#{campeonatoManagedBean.campeonatoSelecionado}"  rowKey="#{c.codigoCampeonato}"
+			>
+
+		   <p:ajax event="rowSelect"   update=":formTableCategorias" />
+           <p:ajax event="rowUnselect" update=":formTableCategorias" />
+           <p:ajax event="rowEdit"     listener="#{campeonatoManagedBean.onRowEdit}"     update=":formTableCategorias" /> 
+
+			<p:column headerText="#{msg['pages.cadastroCampeonato.codigo']}">
+				<h:outputText value="#{c.codigoCampeonato}" />
+			</p:column>
+
+			<p:column headerText="#{msg['pages.cadastroCampeonato.nome']}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{c.nome}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="modelInput" value="#{c.nome}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column style="width:70px" headerText="#{msg['pages.commus.form.opcoes']}">
+					<p:rowEditor />
+					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
+						style="text-align:center"
+						actionListener="#{campeonatoManagedBean.remove(c)}"
+						update=":formTableCampeonatos" />
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+
+    <br/>
+    <h:form id="formTableCategorias">
+	    <h3><p:outputLabel value="#{msg['pages.cadastroCampeonato.categoriasCampeonato']}: #{campeonatoManagedBean.campeonatoSelecionado.nome}" /></h3>
+		<p:dataTable value="#{campeonatoManagedBean.categoriasCampeonato}" var="cat"	id="tableCategorias">
+
+			<p:column headerText="#{msg['pages.cadastroCampeonato.categoria.codigo']}">
+				<h:outputText value="#{cat.codigoCategoria}" />
+			</p:column>
+
+			<p:column headerText="#{msg['pages.cadastroCampeonato.categoria.nome']}">
+						<p:outputLabel value="#{cat.nome}" />
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
 </ui:define>
 </ui:composition>

@@ -1,0 +1,141 @@
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastroCategoria.titulo']}" />
+	</ui:define>
+	
+	<ui:define name="principal">
+	
+	<h:head>
+		<meta charset="UTF-8" />
+	</h:head>
+		<h:body>
+		<p:panel id="basic" header="#{msg['pages.cadastroCategoria.titulo']}" background="#ffffff" style="text-align: center">
+			<div align="center">
+			<h:form>	
+			  <h:panelGrid id="grid" columns="3" cellpadding="5"> 
+ 					
+ 					
+ 				  <p:outputLabel for="nome" value="#{msg['pages.cadastroCategoria.nome']}" />
+	              <p:inputText id="nome" value="#{categoriaManagedBean.categoria.nome}"
+	              required="true" requiredMessage="#{msg['pages.comuns.cadastroCategoria.obrigatorio']}" />
+				  <p:message for="nome"/>	  
+				  
+				  <p:outputLabel for="nascidos" value="#{msg['pages.cadastroCategoria.nascidos']}" />
+	        	  <p:calendar id="nascidos" value="#{categoriaManagedBean.categoria.nascidosApartirDe}" 
+	        	  locale="br" effect="slide" 
+	        	  required="true" requiredMessage="#{msg['pages.cadastroCategoria.obrigatorio']}"/>
+	        	  <p:message for="nascidos"/>	
+	        	  
+	        	 <p:outputLabel for="maxJog" value="#{msg['pages.cadastroCategoria.maxJog']}" />
+	              <p:inputText id="maxJog" value="#{categoriaManagedBean.categoria.maxJogadores}"
+	              required="true" requiredMessage="#{msg['pages.comuns.cadastroCategoria.obrigatorio']}" />
+				  <p:message for="maxJog"/>	
+				  
+				  <p:outputLabel for="minJog" value="#{msg['pages.cadastroCategoria.minJog']}" />
+	              <p:inputText id="minJog" value="#{categoriaManagedBean.categoria.minJogadores}"
+	              required="true" requiredMessage="#{msg['pages.comuns.cadastroCategoria.obrigatorio']}" />
+				  <p:message for="minJog"/>
+				  
+				  <p:outputLabel for="sexo" value="#{msg['pages.cadastroCategoria.sexo']}" />
+	              <p:inputText id="sexo" value="#{categoriaManagedBean.categoria.sexo}"
+	              required="true" requiredMessage="#{msg['pages.comuns.cadastroCategoria.obrigatorio']}" />
+				  <p:message for="sexo"/>
+	              
+	              <p:outputLabel value="#{msg['pages.cadastroCategoria.campeonato.nome']}" />
+				<p:selectOneMenu value="#{categoriaManagedBean.campeonato}"
+				converter="converterCampeonato">
+				<f:selectItem itemValue="" itemLabel="#{msg['pages.cadastroCategoria.campeonato.msg']}" />
+				<f:selectItems value="#{categoriaManagedBean.campeonatos}" var="aux"
+					itemValue="#{aux}" itemLabel="#{aux.nome}" />
+				</p:selectOneMenu>	
+				  
+	       	  </h:panelGrid>
+			   			<p:commandButton value="#{msg['pages.cadastroCategoria.salvar']}"
+			   			id="btnAll" process="@all" 
+			   			update="grid" action="#{CategoriaManagedBean.salvar()}" style="text-align: center"/>
+	       </h:form>
+			</div>
+			</p:panel>
+		</h:body>
+
+    <h3><p:outputLabel value="#{msg['pages.cadastroCategoria.tableTitle']}" /> </h3>
+    
+	<h:form id="formTableCategorias">	
+	    
+		<p:dataTable value="#{categoriaManagedBean.categorias}" var="cat"
+			editable="true" id="tableCategorias">
+
+            <p:ajax event="rowEdit" listener="#{categoriaManagedBean.onRowEdit}" update="tableCategorias"/>
+
+			<p:column headerText="#{msg['pages.cadastroCategoria.codigo']}">
+				<h:outputText value="#{cat.codigo}" />
+			</p:column>
+
+			<p:column headerText="#{msg['pages.cadastroCategoria.descricao']}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{cat.descricao}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="descricao" value="#{cat.descricao}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+
+			<p:column headerText="#{msg['pages.cadastroCategoria.campeonato.nome']}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{catprod.campeonato.nome}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:selectOneMenu value="#{cat.campeonato}"
+							converter="converterCampeonato" style="width:100%">
+							<f:selectItem itemValue="" itemLabel="#{msg['pages.cadastroCategoria.campeonato.msg']}" />
+							<f:selectItems value="#{categoriaManagedBean.campeonatos}"
+								var="aux" itemValue="#{aux}" itemLabel="#{aux.nome}" />
+						</p:selectOneMenu>
+
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="#{msg['pages.cadastroCategoria.valor']}">
+				  <p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{cat.valor}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="valor" value="#{cat.valor}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column style="width:70px" headerText="#{msg['pages.commus.form.opcoes']}">
+
+
+
+					<p:rowEditor />
+					
+					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
+						style="text-align:center"
+						actionListener="#{categoriaManagedBean.remove(cat)}"
+						update=":formTableCategorias" />
+
+
+
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
+	</ui:define>
+</ui:composition>

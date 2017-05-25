@@ -44,10 +44,20 @@ public class Categoria implements Serializable{
 
 
 	//GETTERS AND SETTERS
+	
+	
 	public String getNome() {
 
 		return nome;
 
+	}
+
+	public int getCodigoCategoria() {
+		return codigoCategoria;
+	}
+
+	public void setCodigoCategoria(int codigoCategoria) {
+		this.codigoCategoria = codigoCategoria;
 	}
 
 	public Sexo getSexo() {
