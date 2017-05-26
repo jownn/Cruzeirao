@@ -1,5 +1,6 @@
 package sistema.beans;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -7,6 +8,7 @@ import javax.faces.bean.ViewScoped;
 
 import org.primefaces.event.RowEditEvent;
 
+import sistema.enums.Sexo;
 import sistema.modelos.Campeonato;
 import sistema.modelos.Categoria;
 import sistema.service.CampeonatoService;
@@ -36,6 +38,14 @@ public class CategoriaManagedBean {
 
 	}
 
+	public List<Sexo> getSexo()
+	{
+		List<Sexo> list = Arrays.asList(Sexo.values());
+		
+		return list;
+		
+	}
+	
 	public List<Campeonato> getCampeonatos() {
 		return campService.getCampeonatos();
 
