@@ -6,19 +6,19 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui2="http://java.sun.com/jsf/facelets"
 	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
-
+	
 	<ui:define name="title">
 		<h:outputText value="#{msg['pages.cadastroCategoria.titulo']}" />
 	</ui:define>
 
 	<ui:define name="principal">
-
+	
 		<h:head>
 			<meta charset="UTF-8" />
 		</h:head>
 		<h:body>
 			<p:panel id="basic" header="#{msg['pages.cadastroCategoria.titulo']}"
-				background="#ffffff" style="text-align: center">
+				background="#ffffff">
 				<div align="center">
 					<h:form>
 						<h:panelGrid id="grid" columns="3" cellpadding="5">
@@ -105,6 +105,18 @@
 					<h:outputText value="#{cat.codigoCategoria}" />
 				</p:column>
 
+				<p:column headerText="#{msg['pages.cadastroCategoria.nome']}">
+					<p:cellEditor>
+						<f:facet name="output">
+							<p:outputLabel value="#{cat.nome}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="nome"
+								value="#{cat.nome}" style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				
 				<p:column headerText="#{msg['pages.cadastroCategoria.nascidos']}">
 					<p:cellEditor>
 						<f:facet name="output">
@@ -116,8 +128,48 @@
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
+				
+				<p:column headerText="#{msg['pages.cadastroCategoria.minJog']}">
+					<p:cellEditor>
+						<f:facet name="output">
+							<p:outputLabel value="#{cat.minJogadores}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="minJog"
+								value="#{cat.minJogadores}" style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				
+				<p:column headerText="#{msg['pages.cadastroCategoria.maxJog']}">
+					<p:cellEditor>
+						<f:facet name="output">
+							<p:outputLabel value="#{cat.maxJogadores}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="maxJog"
+								value="#{cat.maxJogadores}" style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				
+				<p:column
+					headerText="#{msg['pages.cadastroCategoria.sexo']}">
+					<p:cellEditor>
+						<f:facet name="output">
+							<p:outputLabel value="#{cat.sexo}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:selectOneMenu value="#{cat.sexo}" style="width:100%">
+								<f:selectItem itemValue=""
+									itemLabel="#{msg['pages.cadastroCategoria.msgsexo']}" />
+								<f:selectItems value="#{categoriaManagedBean.sexo}" var="sexo" />
+							</p:selectOneMenu>
 
-
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				
 				<p:column
 					headerText="#{msg['pages.cadastroCategoria.campeonato.nome']}">
 					<p:cellEditor>
@@ -154,6 +206,5 @@
 				</p:column>
 			</p:dataTable>
 		</h:form>
-
 	</ui:define>
 </ui:composition>
