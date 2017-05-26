@@ -57,10 +57,10 @@
 							
 							<p:outputLabel for="sexo"
 								value="#{msg['pages.cadastroCategoria.sexo']}" />
-							<p:selectOneMenu id="sexo" value="#{categoriaManagedBean.sexo}"
+							<p:selectOneMenu id="sexo" value="#{categoriaManagedBean.categoria.sexo}"
 								required="true"
 								requiredMessage="#{msg['pages.cadastroCategoria.obrigatorio']}">
-								<f:selectItem itemValue="" itemLabel="" />
+								<f:selectItem itemValue="" itemLabel="#{msg['pages.cadastroCategoria.msgsexo']}" />
 								<f:selectItems value="#{categoriaManagedBean.sexo}" var="sexo" />
 							</p:selectOneMenu>
 							<p:message for="sexo"/>
@@ -76,7 +76,7 @@
 								<f:selectItems value="#{categoriaManagedBean.campeonatos}"
 									var="aux" itemValue="#{aux}" itemLabel="#{aux.nome}" />
 							</p:selectOneMenu>
-							<p:message for="camp" />
+							<p:message for="camp"/>
 
 						</h:panelGrid>
 						<p:commandButton value="#{msg['pages.cadastroCategoria.salvar']}"

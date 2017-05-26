@@ -40,10 +40,7 @@ public class CategoriaManagedBean {
 
 	public List<Sexo> getSexo()
 	{
-		List<Sexo> list = Arrays.asList(Sexo.values());
-		
-		return list;
-		
+		return Arrays.asList(Sexo.values());
 	}
 	
 	public List<Campeonato> getCampeonatos() {
