@@ -45,12 +45,12 @@ public class CampeonatoService {
 
 	public List<Categoria> pesquisarCategoriasCampeonato(Campeonato campeonato) {
 
-		List<Categoria> produtos;
+		List<Categoria> categorias;
 
 		campeonato = campeonatoDAO.getById(Campeonato.class, campeonato.getCodigoCampeonato());
-		produtos = campeonato.getCategorias();
+		categorias = campeonato.getCategorias();
 
-		return produtos;
+		return categorias;
 	}
 
 }

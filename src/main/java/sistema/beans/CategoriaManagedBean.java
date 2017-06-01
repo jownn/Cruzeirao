@@ -23,8 +23,13 @@ public class CategoriaManagedBean {
 	private CategoriaService catService = new CategoriaService();
 	private CampeonatoService campService = new CampeonatoService();
 	private List<Categoria> categorias;
-
-	public void salvar() {
+	
+	public boolean salvar() {
+		
+		if(categoria.getNascidosApartirDe() == 0)
+			return false;
+		
+		
 		campeonato.addCategoria(categoria);
 		categoria.setCampeonato(campeonato);
 
@@ -36,6 +41,7 @@ public class CategoriaManagedBean {
 		categoria = new Categoria();
 		campeonato = null;
 
+		return true;
 	}
 
 	public List<Sexo> getSexo()

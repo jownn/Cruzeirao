@@ -81,7 +81,11 @@
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
-
+			
+			<p:column headerText="Start">
+			<h:outputText value="#{c.dataInicioCampeonato}" />
+			</p:column>
+			
 			<p:column style="width:70px" headerText="#{msg['pages.commus.form.opcoes']}">
 					<p:rowEditor />
 					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
