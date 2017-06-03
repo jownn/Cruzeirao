@@ -20,34 +20,26 @@
    				<p:wizard widgetVar="wiz">
         		<p:tab id="Campeonato" title="Campeonato">
         			<p:outputPanel id="campeonatoDetail" style="text-align:center;">
-					<p:dataTable id="tab1" var="campeonato" value="#{fakeManagedBean.campeonatos}">
+					<p:dataTable id="tab1" var="campeonato" value="#{?ManagedBean.campeonatos}">
 							
-							<p:column headerText="#{msg['pages.comuns.inscricao.ano']}" style="text-align:center;">
-								<h:outputText value="#{campeonato.ano}" />
+							<p:column headerText="#{msg['pages.comuns.inscricao.nome']}" style="text-align:center;">
+								<h:outputText value="#{campeonato.nome}" />
 							</p:column>
 							
 							<p:column headerText="#{msg['pages.comuns.inscricao.inicio']}" style="text-align:center;">
-								<h:outputText value="#{campeonato.dataInicio}">
+								<h:outputText value="#{campeonato.dataInicioCampeonato}">
 									<f:convertDateTime type="date" pattern="dd-MM-yyyy" />
 								</h:outputText>
 							</p:column>
 							
 							<p:column headerText="#{msg['pages.comuns.inscricao.fim']}" style="text-align:center;">
-								<h:outputText value="#{campeonato.dataTermino}">
+								<h:outputText value="#{campeonato.dataFimCampeonato}">
 									<f:convertDateTime type="date" pattern="dd-MM-yyyy" />
 								</h:outputText>
 							</p:column>
 							
 							<p:column headerText="#{msg['pages.comuns.inscricao.taxa']}" style="text-align:center;">
 								<h:outputText value="#{campeonato.valorTaxa}" />
-							</p:column>
-							
-							<p:column headerText="#{msg['pages.comuns.inscricao.minJog']}" style="text-align:center;">
-								<h:outputText value="#{campeonato.minJog}" />
-							</p:column>
-							
-							<p:column headerText="#{msg['pages.comuns.inscricao.maxJog']}" style="text-align:center;">
-								<h:outputText value="#{campeonato.maxJog}" />
 							</p:column>
 							
 							<p:column style="text-align:center;">

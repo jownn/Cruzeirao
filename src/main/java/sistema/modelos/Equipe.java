@@ -81,6 +81,11 @@ public class Equipe implements Serializable{
 		this.diretores = diretores;
 
 	}
+	
+
+	public void addDiretor(Usuario diretor) {
+		diretores.add(diretor);
+	}
 
 	public int getCodigoEquipe() {
 

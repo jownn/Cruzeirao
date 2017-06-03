@@ -10,7 +10,11 @@
 <f:view locale="#{localeBean.locale}">
 	<h:head>
 
-		<style> .ui-datagrid-no-border .ui-datagrid-content { border: none;} </style>
+		<style> .ui-datagrid-no-border .ui-datagrid-content { border: none;} 
+		.noScrolllayoutUnit .ui-layout-unit-content{
+    overflow: hidden;
+}
+		</style>
 
 		<title>
 		   <ui:insert name="title">
@@ -55,7 +59,7 @@
 		
 		
 		
-			<p:layoutUnit position="north" size="215">
+			<p:layoutUnit position="north" size="215" styleClass="noScrolllayoutUnit">
 			<div >
 				<p:growl id="message" showDetail="true" />
 
