@@ -31,7 +31,7 @@ public class LoginManagedBean implements Serializable {
 		
       	usuarios = servico.getUsuarios();
       	Usuario a;
-      	Iterator<Usuario> it = usuarios.iterator();		
+      	Iterator<Usuario> it = usuarios.iterator();	
       	
       	while(it.hasNext())
       	{

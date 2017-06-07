@@ -64,7 +64,7 @@
 					<h:outputText value="#{equipe.codigoEquipe}" />
 				</p:column>
 
-				<p:column headerText="Nome">
+				<p:column headerText="#{msg['pages.cadastroEquipe.nome']}">
 					<p:cellEditor>
 						<f:facet name="output">
 							<p:outputLabel value="#{equipe.nome}" />
@@ -76,49 +76,35 @@
 					</p:cellEditor>
 				</p:column>
 				
-				<p:column headerText="Data Fundação">
-					<p:cellEditor>
-						<f:facet name="output">
-							<p:outputLabel value="#{equipe.dataFundacao}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText id="nascidosApartirDe"
-								value="#{equipe.dataFundacao}" style="width:100%" />
-						</f:facet>
-					</p:cellEditor>
+				<p:column headerText="#{msg['pages.cadastroEquipe.dataFundacao']}">
+							<p:outputLabel value="#{equipe.dataFormat}" />
 				</p:column>
-				
-				<p:column headerText="Cidade">
+					
+				<p:column headerText="#{msg['pages.cadastroEquipe.cidade']}">
 					<p:cellEditor>
 						<f:facet name="output">
 							<p:outputLabel value="#{equipe.cidade}" />
 						</f:facet>
 						<f:facet name="input">
-							<p:inputText id="minJog"
+							<p:inputText id="cidade"
 								value="#{equipe.cidade}" style="width:100%" />
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
 				
-				<p:column headerText="Diretores">
-					<p:cellEditor>
-						<f:facet name="output">
+				<p:column headerText="#{msg['pages.cadastroEquipe.diretores']}">
 							<p:outputLabel value="#{equipe.diretoresString}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText id="maxJog"
-								value="#{equipe.diretoresString}" style="width:100%" />
-						</f:facet>
-					</p:cellEditor>
 				</p:column>
 				
 				<p:column style="width:70px"
 					headerText="#{msg['pages.commus.form.opcoes']}">
-
-
-
 					<p:rowEditor />
-
+					
+					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
+						style="text-align:center"
+						actionListener="#{equipeManagedBean.remove(equipe)}"
+						update=":formTableEquipes" />
+						
 				</p:column>
 			</p:dataTable>
 		</h:form>
