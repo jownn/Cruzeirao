@@ -20,7 +20,7 @@
    				<p:wizard widgetVar="wiz">
         		<p:tab id="Campeonato" title="Campeonato">
         			<p:outputPanel id="campeonatoDetail" style="text-align:center;">
-					<p:dataTable id="tab1" var="campeonato" value="#{?ManagedBean.campeonatos}">
+					<p:dataTable id="tab1" var="campeonato" value="#{campeonatoManagedBean.campeonatos}">
 							
 							<p:column headerText="#{msg['pages.comuns.inscricao.nome']}" style="text-align:center;">
 								<h:outputText value="#{campeonato.nome}" />
@@ -45,9 +45,9 @@
 							<p:column style="text-align:center;">
 									<p:commandButton update="@form" oncomplete="PF('wiz').next()" value="Selecionar">
 										<f:setPropertyActionListener value="#{campeonato}"
-											target="#{fakeManagedBean.selectedInscricao.campeonato}" />
+											target="#{inscricaoManagedBean.campeonatoSelecionado}" />
 										<f:setPropertyActionListener value="#{null}"
-											target="#{fakeManagedBean.selectedInscricao.categoria}" />
+											target="#{inscricaoManagedBean.categoriaSelecionado}" />
 									</p:commandButton>
 							</p:column>
 						</p:dataTable>
@@ -56,10 +56,22 @@
 					
 					<p:tab id="Categoria" title="Categoria">
         			<p:outputPanel id="categoriaDetail" style="text-align:center;">
-						<p:dataTable id="tab2" var="categoria" value="#{fakeManagedBean.selectedInscricao.campeonato.categoria}">
+						<p:dataTable id="tab2" var="categoria" value="#{inscricaoManagedBean.campeonatoSelecionado.categorias}">
+
+							<p:column headerText="#{msg['pages.comuns.inscricao.nome']}" style="text-align:center;">
+								<h:outputText value="#{categoria.nome}" />
+							</p:column>
 							
-							<p:column headerText="#{msg['pages.comuns.inscricao.anoMin']}" style="text-align:center;">
-								<h:outputText value="#{categoria.anoMin}" />
+							<p:column headerText="#{msg['pages.comuns.inscricao.nascidos']}" style="text-align:center;">
+								<h:outputText value="#{categoria.nascidosApartirDe}" />
+							</p:column>
+							
+							<p:column headerText="#{msg['pages.comuns.inscricao.minJog']}" style="text-align:center;">
+								<h:outputText value="#{categoria.minJogadores}" />
+							</p:column>
+							
+							<p:column headerText="#{msg['pages.comuns.inscricao.maxJog']}" style="text-align:center;">
+								<h:outputText value="#{categoria.maxJogadores}" />
 							</p:column>
 							
 							<p:column headerText="#{msg['pages.comuns.inscricao.sexo']}" style="text-align:center;">
@@ -69,49 +81,36 @@
 							<p:column style="text-align:center;">
 								<p:commandButton update="@form" oncomplete="PF('wiz').next()" value="Inscrever-se">
 									<f:setPropertyActionListener value="#{categoria}"
-										target="#{fakeManagedBean.selectedInscricao.categoria}" />
+										target="#{inscricaoManagedBean.categoriaSelecionado}" />
 								</p:commandButton>
 							</p:column>
 						</p:dataTable>
 					
 					</p:outputPanel>
 					</p:tab>
-					<f:param id="adicionar" name="add"/>
+					
+					<p:tab id="Escolha" title="Categoria">
+        			<p:outputPanel id="EscolhaDetail" style="text-align:center;">
+						
+					
+					</p:outputPanel>
+					</p:tab>
+					
 					<p:tab id="Cadastro" title="Cadastro">
 					<p:panel header="Cadastro" style="text-align:center;">
 							<p:panelGrid id="categoriaEscolhida" columns="3">							
 								<h:outputText value="#{msg['pages.comuns.inscricao.campeonato']}" />
-								<h:outputText value="#{fakeManagedBean.selectedInscricao.campeonato.nome}" />
+								<h:outputText value="#{inscricaoManagedBean.campeonatoSelecionado.nome}" />
 								<br/>
 								<h:outputText value="#{msg['pages.comuns.inscricao.categoria']}" />
-								<h:outputText value="#{fakeManagedBean.selectedInscricao.categoria.nome}" />
-								<br/>	
-								<h:outputText value="#{msg['pages.comuns.inscricao.tecnico']}"  />
-								<h:outputText  value="#{fakeManagedBean.selectedInscricao.tecnico}"/>
-								<p:commandButton value="Adicionar"/>
-								<h:outputText value="#{msg['pages.comuns.inscricao.auxiliar']}" />
-								<h:outputText  value="#{fakeManagedBean.selectedInscricao.auxiliar}"/>
-								<p:commandButton value="Adicionar"/>
-								<h:outputText value="#{msg['pages.comuns.inscricao.massagista']}" />
-								<h:outputText  value="#{fakeManagedBean.selectedInscricao.massagista}"/>
-								<p:commandButton value="Adicionar"/>
-								<h:outputText value="#{msg['pages.comuns.inscricao.preparador']}" />
-								<h:outputText  value="#{fakeManagedBean.selectedInscricao.preparadorFisico}"/>
-								<p:commandButton value="Adicionar"/>
-								<h:outputText value="Adicionar Jogadores:" />
-								<h:outputText  value="#{fakeManagedBean.selectedInscricao.jogadores}"/>
-								<p:commandButton value="Adicionar" oncomplete="PF('add').show();"/>
+								<h:outputText value="#{inscricaoManagedBean.categoriaSelecionado.nome}" />
+								<br/>
 							</p:panelGrid>
 					</p:panel>
 					</p:tab>
 
 			</p:wizard>
-			
-			<p:dialog header="Adicionar" widgetVar="add" showEffect="fade" hideEffect="fade" height="100">
-				<h:outputText  value="nao funciona" />
-				<h:inputText />
-			</p:dialog>
-			
+						
 		</h:form>
 	</ui:define>
 </ui:composition>
