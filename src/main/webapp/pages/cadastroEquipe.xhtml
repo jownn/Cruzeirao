@@ -46,19 +46,22 @@
 						<p:commandButton value="#{msg['pages.cadastroEquipe.salvar']}"
 							id="btnAll" process="@all"
 							action="#{equipeManagedBean.salvar()}" style="text-align: center"
-							update="formTableEquipes" />
+							update=":formTableEquipes" />
 
 					</h:form>
 				</div>
 			</p:panel>
 			
 			<h:form id="formTableEquipes">
-
+			
+			<p:growl id="growl" showDetail="true" />
+			
 			<p:dataTable value="#{equipeManagedBean.equipesDiretor}" var="equipe"
-				editable="true" id="tableEquipes">
-
+				editable="true" id="tableEquipes" 
+				rowKey="#{equipe.codigoEquipe}">
+				
 				<p:ajax event="rowEdit" listener="#{equipeManagedBean.onRowEdit}"
-					update="tableEquipes" />
+					update=":formTableEquipes" />
 
 				<p:column headerText="#{msg['pages.cadastroCategoria.codigo']}">
 					<h:outputText value="#{equipe.codigoEquipe}" />

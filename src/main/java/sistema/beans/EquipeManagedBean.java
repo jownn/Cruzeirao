@@ -27,10 +27,19 @@ public class EquipeManagedBean {
 
 	private Equipe equipe = new Equipe();
 	private EquipeService equiService = new EquipeService();
+	private Equipe equipeSelecionado;
 	@ManagedProperty(value="#{loginManagedBean}")
 	private LoginManagedBean login;
 	private List<Equipe> equipes;
 	
+	public Equipe getEquipeSelecionado() {
+		return equipeSelecionado;
+	}
+
+	public void setEquipeSelecionado(Equipe equipeSelecionado) {
+		this.equipeSelecionado = equipeSelecionado;
+	}
+
 	public void setLogin(LoginManagedBean login) {
 		this.login = login;
 	}
@@ -108,9 +117,5 @@ public class EquipeManagedBean {
 		equiService.alterar(p);
 	}
 	
-	public void Remove(Equipe equipe) {
-		equiService.remover(equipe);
-		equipes.remove(equipe);
-	}
 	
 }
