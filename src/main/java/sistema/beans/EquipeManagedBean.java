@@ -1,5 +1,8 @@
 package sistema.beans;
 
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -11,6 +14,7 @@ import org.primefaces.event.RowEditEvent;
 import sistema.interfaces.Cidade;
 import sistema.modelos.Campeonato;
 import sistema.modelos.Equipe;
+import sistema.modelos.Usuario;
 import sistema.modelos.Equipe;
 import sistema.service.EquipeService;
 import sistema.service.EquipeService;
@@ -29,9 +33,27 @@ public class EquipeManagedBean {
 		this.login = login;
 	}
 	
+	public List<Equipe> getEquipesDiretor(){
+		
+		List<Equipe> retorno =  new ArrayList<Equipe>();
+		equipes = equiService.getEquipes();
+		
+		for(Equipe e : equipes)
+		{
+			for(Usuario u : e.getDiretores()){
+				
+				if(u.getEmail() != null)
+				if(u.getEmail().equals(login.getUsuarioAtual().getEmail()))
+					retorno.add(e);
+			}
+		}
+		
+		return retorno;
+	}
+	
 	public boolean salvar(){
 			equipe.addDiretor(login.getUsuarioAtual());
-			
+			equipe.setDataFundacao(new GregorianCalendar().getTime());
 			equipe = equiService.salvar(equipe);
 			
 			if(equipe != null)
@@ -61,7 +83,6 @@ public class EquipeManagedBean {
 	}
 
 	public List<Equipe> getEquipes() {
-		if (equipes == null)
 			equipes = equiService.getEquipes();
 
 		return equipes;

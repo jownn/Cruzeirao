@@ -1,9 +1,11 @@
 package sistema.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import sistema.dao.EquipeDAO;
 import sistema.modelos.Equipe;
+import sistema.modelos.Usuario;
 
 public class EquipeService {
 
@@ -42,5 +44,4 @@ public class EquipeService {
 		equipeDAO.closeEntityManager();
 		return equipe;
 	}
-
 }

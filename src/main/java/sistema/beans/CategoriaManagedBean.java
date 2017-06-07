@@ -26,7 +26,7 @@ public class CategoriaManagedBean {
 	
 	public boolean salvar() {
 		
-		if(categoria.getNascidosApartirDe() == 0)
+		if(categoria.getNascidosApartirDe() < 1920 || categoria.getMinJogadores() == 0 || categoria.getMaxJogadores() == 0)
 			return false;
 		
 		

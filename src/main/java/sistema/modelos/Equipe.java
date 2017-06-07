@@ -3,6 +3,7 @@ package sistema.modelos;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -12,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.primefaces.event.RowEditEvent;
 
 @Entity
 public class Equipe implements Serializable{
@@ -39,7 +42,17 @@ public class Equipe implements Serializable{
 		return nome;
 
 	}
-
+	
+	public String getDiretoresString(){
+		String retorno="";
+		
+		for (Usuario user : diretores) {
+			retorno += user.getNome() + ", ";
+		}
+	
+		return retorno;
+	}
+	
 	public void setNome(String nome) {
 
 		this.nome = nome;
@@ -97,6 +110,13 @@ public class Equipe implements Serializable{
 
 		this.codigoEquipe = codigoEquipe;
 
+	}
+	
+	public void onRowEdit(RowEditEvent event) {
+
+	
+		//Categoria p = ((Categoria) event.getObject());
+		//catService.alterar(p);
 	}
 
 }

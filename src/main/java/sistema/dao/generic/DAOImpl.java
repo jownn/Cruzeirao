@@ -57,7 +57,7 @@ public abstract class DAOImpl <T, I extends Serializable> {
 
 		return getEntityManager().createQuery("select o from " + classe.getSimpleName() + " o").getResultList();
 	}
-
+	
 
 	public EntityManager getEntityManager() {
 	  

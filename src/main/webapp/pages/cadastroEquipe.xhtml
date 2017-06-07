@@ -44,12 +44,84 @@
 
 						</h:panelGrid>
 						<p:commandButton value="#{msg['pages.cadastroEquipe.salvar']}"
-							id="btnAll" process="@all" update="grid"
-							action="#{equipeManagedBean.salvar()}" style="text-align: center" />
+							id="btnAll" process="@all"
+							action="#{equipeManagedBean.salvar()}" style="text-align: center"
+							update="formTableEquipes" />
 
 					</h:form>
 				</div>
 			</p:panel>
+			
+			<h:form id="formTableEquipes">
+
+			<p:dataTable value="#{equipeManagedBean.equipesDiretor}" var="equipe"
+				editable="true" id="tableEquipes">
+
+				<p:ajax event="rowEdit" listener="#{equipeManagedBean.onRowEdit}"
+					update="tableEquipes" />
+
+				<p:column headerText="#{msg['pages.cadastroCategoria.codigo']}">
+					<h:outputText value="#{equipe.codigoEquipe}" />
+				</p:column>
+
+				<p:column headerText="Nome">
+					<p:cellEditor>
+						<f:facet name="output">
+							<p:outputLabel value="#{equipe.nome}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="nome"
+								value="#{equipe.nome}" style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				
+				<p:column headerText="Data Fundação">
+					<p:cellEditor>
+						<f:facet name="output">
+							<p:outputLabel value="#{equipe.dataFundacao}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="nascidosApartirDe"
+								value="#{equipe.dataFundacao}" style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				
+				<p:column headerText="Cidade">
+					<p:cellEditor>
+						<f:facet name="output">
+							<p:outputLabel value="#{equipe.cidade}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="minJog"
+								value="#{equipe.cidade}" style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				
+				<p:column headerText="Diretores">
+					<p:cellEditor>
+						<f:facet name="output">
+							<p:outputLabel value="#{equipe.diretoresString}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="maxJog"
+								value="#{equipe.diretoresString}" style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				
+				<p:column style="width:70px"
+					headerText="#{msg['pages.commus.form.opcoes']}">
+
+
+
+					<p:rowEditor />
+
+				</p:column>
+			</p:dataTable>
+		</h:form>
 		</h:body>
 	</ui:define>
 </ui:composition>
