@@ -13,10 +13,12 @@ import org.primefaces.event.RowEditEvent;
 
 import sistema.interfaces.Cidade;
 import sistema.modelos.Campeonato;
+import sistema.modelos.Categoria;
 import sistema.modelos.Equipe;
 import sistema.modelos.Usuario;
 import sistema.modelos.Equipe;
 import sistema.service.EquipeService;
+import sistema.service.UsuarioService;
 import sistema.service.EquipeService;
 
 @ManagedBean(name = "equipeManagedBean")
@@ -43,8 +45,10 @@ public class EquipeManagedBean {
 			for(Usuario u : e.getDiretores()){
 				
 				if(u.getEmail() != null)
-				if(u.getEmail().equals(login.getUsuarioAtual().getEmail()))
+				{
+					if(u.getEmail().equals(login.getUsuarioAtual().getEmail()))
 					retorno.add(e);
+				}
 			}
 		}
 		
@@ -52,7 +56,17 @@ public class EquipeManagedBean {
 	}
 	
 	public boolean salvar(){
-			equipe.addDiretor(login.getUsuarioAtual());
+		UsuarioService user = new UsuarioService();
+		List<Usuario> users = user.getUsuarios();
+		
+		for(Usuario u : users)
+			if(u.getEmail().equals(login.getUsuarioAtual().getEmail()))
+				{
+					equipe.addDiretor(u);
+					break;
+				}
+			//System.out.println
+			//equipe.addDiretor(login.getUsuarioAtual());
 			equipe.setDataFundacao(new GregorianCalendar().getTime());
 			equipe = equiService.salvar(equipe);
 			
@@ -92,6 +106,11 @@ public class EquipeManagedBean {
 
 		Equipe p = ((Equipe) event.getObject());
 		equiService.alterar(p);
+	}
+	
+	public void Remove(Equipe equipe) {
+		equiService.remover(equipe);
+		equipes.remove(equipe);
 	}
 	
 }

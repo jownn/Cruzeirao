@@ -34,7 +34,7 @@ public class Equipe implements Serializable{
 	private String cidade;
 
 	@ManyToMany
-	private List<Usuario> diretores= new ArrayList<Usuario>();
+	private List<Usuario> diretores = new ArrayList<Usuario>();
 
 	//GETTERS AND SETTERS
 	public String getNome() {
@@ -47,7 +47,7 @@ public class Equipe implements Serializable{
 		String retorno="";
 		
 		for (Usuario user : diretores) {
-			retorno += user.getNome() + ", ";
+			retorno += user.getEmail() + ", ";
 		}
 	
 		return retorno;
@@ -60,9 +60,18 @@ public class Equipe implements Serializable{
 	}
 
 	public Date getDataFundacao() {
-
 		return dataFundacao;
 
+	}
+	
+	public String getDataFormat(){
+		String x="";
+		x += dataFundacao.getDay() + "/";
+		x += dataFundacao.getMonth() + "/";
+		x += (dataFundacao.getYear() + 1900);
+		
+		
+		return x;
 	}
 
 	public void setDataFundacao(Date dataFundacao) {
