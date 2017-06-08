@@ -16,11 +16,28 @@
 		<h:form id="form">
 				
 				<p:growl id="growl" sticky="true" showDetail="true"/>
- 
+ 			
    				<p:wizard widgetVar="wiz">
+   				<p:tab id="Equipe" title="Equipe">
+   				<p:outputPanel id="timeDetail" style="text-align:center;">
+   				<p:dataTable id="tab1" var="equipe" value="#{equipeManagedBean.equipesDiretor}">
+							
+							<p:column headerText="#{msg['pages.comuns.inscricao.nome']}" style="text-align:center;">
+								<h:outputText value="#{equipe.nome}" />
+							</p:column>
+							<p:column style="text-align:center;">
+									<p:commandButton update="@form" oncomplete="PF('wiz').next()" value="Selecionar">
+										<f:setPropertyActionListener value="#{equipe}"
+											target="#{inscricaoManagedBean.equipeSelecionada}" />
+									</p:commandButton>
+							</p:column>
+   				</p:dataTable>
+   				</p:outputPanel>
+   				</p:tab>
+   				
         		<p:tab id="Campeonato" title="Campeonato">
         			<p:outputPanel id="campeonatoDetail" style="text-align:center;">
-					<p:dataTable id="tab1" var="campeonato" value="#{campeonatoManagedBean.campeonatos}">
+					<p:dataTable id="tab2" var="campeonato" value="#{campeonatoManagedBean.campeonatos}">
 							
 							<p:column headerText="#{msg['pages.comuns.inscricao.nome']}" style="text-align:center;">
 								<h:outputText value="#{campeonato.nome}" />
@@ -56,7 +73,7 @@
 					
 					<p:tab id="Categoria" title="Categoria">
         			<p:outputPanel id="categoriaDetail" style="text-align:center;">
-						<p:dataTable id="tab2" var="categoria" value="#{inscricaoManagedBean.campeonatoSelecionado.categorias}">
+						<p:dataTable id="tab3" var="categoria" value="#{inscricaoManagedBean.campeonatoSelecionado.categorias}">
 
 							<p:column headerText="#{msg['pages.comuns.inscricao.nome']}" style="text-align:center;">
 								<h:outputText value="#{categoria.nome}" />
@@ -89,24 +106,32 @@
 					</p:outputPanel>
 					</p:tab>
 					
-					<p:tab id="Escolha" title="Categoria">
-        			<p:outputPanel id="EscolhaDetail" style="text-align:center;">
-						
-					
-					</p:outputPanel>
-					</p:tab>
-					
 					<p:tab id="Cadastro" title="Cadastro">
 					<p:panel header="Cadastro" style="text-align:center;">
-							<p:panelGrid id="categoriaEscolhida" columns="3">							
+							
+							<p:panelGrid id="categoriaEscolhida" columns="2">							
 								<h:outputText value="#{msg['pages.comuns.inscricao.campeonato']}" />
 								<h:outputText value="#{inscricaoManagedBean.campeonatoSelecionado.nome}" />
-								<br/>
+								
 								<h:outputText value="#{msg['pages.comuns.inscricao.categoria']}" />
 								<h:outputText value="#{inscricaoManagedBean.categoriaSelecionado.nome}" />
-								<br/>
+								
+								<h:outputText value="#{msg['pages.comuns.inscricao.equipe']}" />
+								<h:outputText value="#{inscricaoManagedBean.equipeSelecionada.nome}" />
+								
 							</p:panelGrid>
+							<p:commandButton update="@form" oncomplete="PF('wiz').next()" value="Inscrever-se"
+							action="#{inscricaoManagedBean.preInscricao()}" >
+							</p:commandButton>
 					</p:panel>
+					</p:tab>
+					<p:tab id="PreCadastro" title="PreCadastro">
+					<p:panel header="Pre Cadastro" style="text-align:center;">
+							
+							<p:panelGrid id="preCadastro" columns="1">							
+								<h:outputText value="Pré inscrição realizada, cadastre os componentes do time na guia de 'Inscrições Efetuadas' " />
+							</p:panelGrid>
+							</p:panel>
 					</p:tab>
 
 			</p:wizard>

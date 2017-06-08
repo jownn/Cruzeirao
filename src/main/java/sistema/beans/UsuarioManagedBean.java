@@ -27,18 +27,18 @@ public class UsuarioManagedBean {
 		this.usuario = usuario;
 	}
 	
-	public List<Usuario> getAlunos() {
-		if (usuarios == null)
-			usuarios = servico.getUsuarios();
-
-		return usuarios;
+	public List<Usuario> getUsuarios(){
+		return servico.getUsuarios();
 	}
 
 	public String salvar() {
 			usuario.setTipo(TipoUsuario.NORMAL);
-	      	servico.salvar(usuario);
+	      	usuario = servico.salvar(usuario);
 	  		usuario = new Usuario();
-	         return "inicio.xhtml";
+	  		
+	  		
+	  		
+	        return "login.xhtml";
 	     }
 	
 	

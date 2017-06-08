@@ -43,6 +43,18 @@ public class Equipe implements Serializable{
 
 	}
 	
+
+	public boolean isDiretor(Usuario userAtual)
+	{
+		for(Usuario user : diretores)
+		{
+			if(user.getEmail().equals(userAtual.getEmail()))
+				return true;
+		}
+		
+		return false;
+	}
+	
 	public String getDiretoresString(){
 		String retorno="";
 		
@@ -63,6 +75,7 @@ public class Equipe implements Serializable{
 		return dataFundacao;
 
 	}
+	
 	
 	public String getDataFormat(){
 		String x="";
@@ -120,12 +133,15 @@ public class Equipe implements Serializable{
 		this.codigoEquipe = codigoEquipe;
 
 	}
+
 	
 	public void onRowEdit(RowEditEvent event) {
 
 	
-		//Categoria p = ((Categoria) event.getObject());
+		//Equipe p = ((Equipe) event.getObject());
 		//catService.alterar(p);
 	}
+	
+	
 
 }

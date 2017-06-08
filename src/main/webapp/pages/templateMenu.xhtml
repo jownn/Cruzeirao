@@ -3,67 +3,125 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui"
-	lang="#{localeBean.language}"
-	>
+	xmlns:p="http://primefaces.org/ui" lang="#{localeBean.language}">
 
 <f:view locale="#{localeBean.locale}">
 	<h:head>
 
-		<style> .ui-datagrid-no-border .ui-datagrid-content { border: none;} 
-		.noScrolllayoutUnit .ui-layout-unit-content{
-    overflow: hidden;
+		<style>
+.ui-datagrid-no-border .ui-datagrid-content {
+	border: none;
 }
-		</style>
 
-		<title>
-		   <ui:insert name="title">
+.noScrolllayoutUnit .ui-layout-unit-content {
+	overflow: hidden;
+}
+</style>
+
+		<title><ui:insert name="title">
 				<h:outputLabel value="#{msg['pages.templateMenu.titleMainMenu']}" />
-			</ui:insert>
-	    </title>
+			</ui:insert></title>
 	</h:head>
 
 	<h:body>
-	 
+
 		<p:layout id="globalLayout" fullPage="true">
-		
-		<p:dialog header="#{msg['pages.templateMenu.solicitacao']}" widgetVar="dlg2" modal="true" 
-		height="450" width="900"
-		showEffect="clip" hideEffect="puff">
-    		<p:tabView orientation="top">
+
+			<p:dialog header="#{msg['pages.templateMenu.solicitacao']}"
+				widgetVar="dlg2" modal="true" height="450" width="900"
+				showEffect="clip" hideEffect="puff">
+				<p:tabView orientation="top">
 	       		<p:tab title="#{msg['pages.templateMenu.lista']}">
 		            <h:panelGrid columns="2" position="center">
 		                <p:dataTable var="categoria">
-						
-							<p:column headerText="#{msg['pages.templateMenu.time']}">
+
+								<p:column headerText="#{msg['pages.templateMenu.time']}">
 						        <!--link para pagina de times-->
 						    </p:column>
 						   
 							<p:column headerText="#{msg['pages.templateMenu.categoria']}">
 						        
 						    </p:column>
-							
-							<p:column headerText="#{msg['pages.templateMenu.campeonato']}">
+
+								<p:column headerText="#{msg['pages.templateMenu.campeonato']}">
 						        
 						    </p:column>
 							
 						    <p:column headerText="#{msg['pages.templateMenu.aceitar']}">
 						        <!--link para pagina de inscrição-->
 						    </p:column>
-						</p:dataTable>
+							</p:dataTable>
 		           	</h:panelGrid>
 	        	</p:tab>
-			</p:tabView>
+				</p:tabView>
 			  	       
-		</p:dialog>  
-		
-		
-		
-			<p:layoutUnit position="north" size="215" styleClass="noScrolllayoutUnit">
-			<div >
-				<p:growl id="message" showDetail="true" />
+		</p:dialog>
 
-				<!-- <p:commandButton value="#{msg['pages.linguagem.idioma']}"
+			<p:dialog header="#{msg['pages.templateMenu.solicitacao']}"
+				widgetVar="dlg3" modal="true" height="450" width="900"
+				showEffect="Size" hideEffect="puff">
+
+				<h:form id="form">
+
+					<p:growl id="growl" sticky="true" showDetail="true" />
+
+					<p:wizard  widgetVar="wiz">
+						<p:tab id="equipes" title="Equipes">
+							<p:dataTable id="tab1" var="inscricao"
+								value="#{inscricaoManagedBean.inscricoesRealizadas}">
+
+								<p:column headerText="Nome" style="text-align:center;">
+									<h:outputText value="#{inscricao.equipe.nome}" />
+								</p:column>
+								
+								<p:column headerText="Status" style="text-align:center;">
+									<h:outputText value="#{inscricao.validadaS}" />
+								</p:column>
+									<p:column style="text-align:center;">
+									<p:commandButton update="@form" oncomplete="PF('wiz').next()" value="Selecionar">
+										<f:setPropertyActionListener value="#{inscricao}"
+											target="#{inscricaoManagedBean.inscricaoSelecionado}" />
+									</p:commandButton>
+							</p:column>
+							</p:dataTable>
+						</p:tab>
+						
+						<p:tab id="Cadastro" title="Cadastro">
+							<div align="center">
+							<h:form>
+							<h:panelGrid id="grid" columns="2" cellpadding="5">
+							<p:outputLabel
+								value="Usuario: " />
+							<p:selectOneMenu id="usuario" panelStyle="width:180px" effect="fade" var="us"
+								style="width:160px" filter="true" filterMatchMode="startsWith">
+								<f:selectItem
+									itemLabel="#{msg['pages.cadastroEquipe.selecione']}"
+									itemValue="" noSelectionOption="true" />
+								<f:selectItems value="#{usuarioManagedBean.usuarios}" var="user"
+									itemLabel="#{user}" itemValue="#{user}" />
+								<h:outputText value="#{us}" />
+							</p:selectOneMenu>
+							
+							
+							</h:panelGrid>
+							</h:form>
+							</div>
+						</p:tab>
+
+					</p:wizard>
+
+				</h:form>
+
+			</p:dialog>
+
+
+
+			<p:layoutUnit position="north" size="215"
+				styleClass="noScrolllayoutUnit">
+				<div>
+					<p:growl id="message" showDetail="true" />
+
+					<!-- <p:commandButton value="#{msg['pages.linguagem.idioma']}"
 					update="message" style="horizontal-align:right">
 					<p:confirm header="Linguagem" message="#{msg['pages.linguagem.setIdioma']} " />
 				</p:commandButton>
@@ -83,7 +141,7 @@
 				</p:confirmDialog>-->
 				</div>
 				<div>
-				<ui:include src="comuns/cabecalho.xhtml" />
+					<ui:include src="comuns/cabecalho.xhtml" />
 				</div>
 			</p:layoutUnit>
 
@@ -94,17 +152,17 @@
 
 
 			<!-- Menu lateral -->
-			 <p:layoutUnit position="west"
+			<p:layoutUnit position="west"
 				header="#{msg['pages.templateMenu.titleMainMenu']}"
 				collapsible="true" size="220">
 				<ui:include src="comuns/menuLateral.xhtml" />
 			</p:layoutUnit>
 
 
-			<p:layoutUnit position="center" >
-			
+			<p:layoutUnit position="center">
+
 				<ui:insert name="principal" />
-			
+
 			</p:layoutUnit>
 		</p:layout>
 	</h:body>

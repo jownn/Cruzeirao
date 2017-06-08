@@ -63,6 +63,7 @@ public class EquipeManagedBean {
 		
 		return retorno;
 	}
+
 	
 	public boolean salvar(){
 		UsuarioService user = new UsuarioService();

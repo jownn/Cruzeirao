@@ -44,7 +44,14 @@ public class Inscricao implements Serializable {
 		return numero;
 
 	}
-
+	
+	public String getValidadaS()
+	{
+		if(validada == false)
+			return "Pendente";
+		else
+			return "Confirmada";
+	}
 	public void setNumero(long numero) {
 
 		this.numero = numero;
@@ -122,5 +129,4 @@ public class Inscricao implements Serializable {
 		this.equipe = equipe;
 
 	}
-
 }
